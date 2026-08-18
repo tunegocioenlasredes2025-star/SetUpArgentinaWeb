@@ -40,19 +40,23 @@ document.addEventListener('DOMContentLoaded', () => {
   // Create overlay
   const overlay = document.createElement('div');
   overlay.className = 'mobile-menu-overlay';
-  overlay.innerHTML = `
-    <button class="mobile-menu-close" aria-label="Close menu">
-      <span></span><span></span>
-    </button>
-    <ul class="nav-links">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#process">Process</a></li>
-      <li><a href="#why-us">Why Us</a></li>
-      <li><a href="#founder">About</a></li>
-      <li><a href="#faq">FAQ</a></li>
-    </ul>
-    <a href="#contact" class="btn-nav-cta">Book Free Consultation</a>
-  `;
+  // El menu mobile se arma clonando el nav real de la pagina, para que
+  // funcione igual en los dos idiomas y no queden links muertos al pasar
+  // de la landing de una sola pagina al sitio multipagina.
+  const menuList = navLinks ? navLinks.cloneNode(true) : document.createElement('ul');
+  menuList.removeAttribute('id');
+  const navCta   = document.querySelector('.nav-actions .btn-nav-cta');
+  const navLang  = document.querySelector('.nav-actions .lang-switch');
+
+  const closeBtn = document.createElement('button');
+  closeBtn.className = 'mobile-menu-close';
+  closeBtn.setAttribute('aria-label', 'Close menu');
+  closeBtn.innerHTML = '<span></span><span></span>';
+
+  overlay.appendChild(closeBtn);
+  overlay.appendChild(menuList);
+  if (navCta)  overlay.appendChild(navCta.cloneNode(true));
+  if (navLang) overlay.appendChild(navLang.cloneNode(true));
   document.body.appendChild(overlay);
 
   const openMobileMenu  = () => {
@@ -315,3 +319,43 @@ shakeStyle.textContent = `
   }
 `;
 document.head.appendChild(shakeStyle);
+
+/* ─── SELECTOR DE IDIOMA ─────────────────────────────
+   Se le OFRECE al visitante cambiar de idioma; nunca se lo
+   redirige por su ubicacion. Redirigir por IP hace que el robot
+   de Google, que rastrea desde Estados Unidos, vea siempre la
+   misma version y nunca encuentre la otra.                      */
+(function () {
+  var KEY = 'setup_lang';
+  var hint = document.getElementById('langHint');
+  var html = document.documentElement.lang || 'en';
+  var pageLang = html.slice(0, 2);
+
+  // Si ya eligio un idioma antes, respetamos esa eleccion y no molestamos.
+  document.querySelectorAll('.lang-switch, .lang-hint-go').forEach(function (a) {
+    a.addEventListener('click', function () {
+      try { localStorage.setItem(KEY, a.getAttribute('hreflang') ||
+            (pageLang === 'en' ? 'es' : 'en')); } catch (e) {}
+    });
+  });
+
+  if (!hint) return;
+
+  var saved;
+  try { saved = localStorage.getItem(KEY); } catch (e) {}
+  if (saved) return;                       // ya decidio
+  try { if (sessionStorage.getItem(KEY + '_dismissed')) return; } catch (e) {}
+
+  var prefers = (navigator.languages || [navigator.language || 'en'])[0]
+                  .slice(0, 2).toLowerCase();
+  var target  = pageLang === 'en' ? 'es' : 'en';
+
+  // Solo se muestra si el navegador pide justo el otro idioma.
+  if (prefers !== target) return;
+
+  hint.hidden = false;
+  hint.querySelector('.lang-hint-close').addEventListener('click', function () {
+    hint.hidden = true;
+    try { sessionStorage.setItem(KEY + '_dismissed', '1'); } catch (e) {}
+  });
+})();
