@@ -106,15 +106,25 @@ SERVICE_NAMES = {
 SERVICE_ORDER = ["formation", "accounting", "advisory", "represent"]
 
 
-def head(*, lang, key, title, description, schema=None, robots="index, follow"):
-    """Head completo, con hreflang reciproco y x-default apuntando al ingles."""
-    canonical = abs_url(key, lang)
+def head(*, lang, key, title, description, schema=None, robots="index, follow",
+         paths=None):
+    """Head completo, con hreflang reciproco y x-default apuntando al ingles.
+
+    paths: (ruta_en, ruta_es) explicitas, para paginas que no estan en el
+    mapa fijo (por ejemplo cada nota del blog).
+    """
+    def _abs(code):
+        if paths:
+            return SITE + paths[0 if code == "en" else 1]
+        return abs_url(key, code)
+
+    canonical = _abs(lang)
     alt_lines = []
     for code in ("en", "es"):
         alt_lines.append('  <link rel="alternate" hreflang="%s" href="%s">'
-                         % (code, abs_url(key, code)))
+                         % (code, _abs(code)))
     alt_lines.append('  <link rel="alternate" hreflang="x-default" href="%s">'
-                     % abs_url(key, "en"))
+                     % _abs("en"))
     alts = "\n".join(alt_lines)
 
     blocks = ""
@@ -162,7 +172,7 @@ def head(*, lang, key, title, description, schema=None, robots="index, follow"):
 '''
 
 
-def nav(lang, key):
+def nav(lang, key, swap_to=None):
     t = T[lang]
     items = list(t["nav"])
     if BLOG_PUBLIC:
@@ -171,7 +181,7 @@ def nav(lang, key):
         '        <li><a href="%s"%s>%s</a></li>'
         % (url(k, lang), ACTIVE if k == key else "", label)
         for k, label in items)
-    swap = url(key, other(lang))
+    swap = swap_to or url(key, other(lang))
     return f'''
 <nav id="navbar">
   <div class="nav-container">

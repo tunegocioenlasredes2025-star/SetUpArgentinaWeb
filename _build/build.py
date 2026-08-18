@@ -54,8 +54,19 @@ def write_page(key, lang, html):
     return out_path(key, lang)
 
 
+def write_raw(path, html):
+    """Escribe una pagina en una ruta arbitraria (notas del blog)."""
+    dest = os.path.join(ROOT, path)
+    os.makedirs(os.path.dirname(dest) or ROOT, exist_ok=True)
+    with open(dest, "w", encoding="utf-8") as fh:
+        fh.write(html)
+    return path
+
+
 def main():
     import pages_about
+    import pages_blog
+    import pages_home
     import pages_faq
     import pages_partners
     import pages_contact
@@ -67,10 +78,16 @@ def main():
         print("styles.css  ya tenia los estilos nuevos")
 
     written = []
-    for module in (pages_about, pages_services, pages_faq,
+    for module in (pages_home, pages_about, pages_services, pages_faq,
+                   pages_blog,
                    pages_partners, pages_contact):
         for key, lang, html in module.build():
             written.append(write_page(key, lang, html))
+
+    # Las notas del blog no estan en el mapa fijo de paginas: cada una
+    # trae su propia ruta en los dos idiomas.
+    for path, html in pages_blog.build_articles():
+        written.append(write_raw(path, html))
 
     print("\n%d paginas generadas:" % len(written))
     for w in sorted(written):

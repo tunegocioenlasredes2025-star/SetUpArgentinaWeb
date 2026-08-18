@@ -375,3 +375,62 @@
   .faq-acc summary { padding: 17px 18px; font-size: 0.96rem; }
   .faq-acc-body { padding: 0 18px 18px; }
 }
+
+/* ─── Blog ──────────────────────────────── */
+.blog-section { padding: 0 0 var(--section-py); }
+.post-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+.post-card {
+  display: block; padding: 28px 26px;
+  background: linear-gradient(180deg, var(--bg-card), var(--bg-1));
+  border: 1px solid var(--border-md); border-radius: var(--r-lg);
+  transition: transform var(--tr-med), border-color var(--tr-med);
+}
+.post-card:hover { transform: translateY(-4px); border-color: var(--gold-border); }
+.post-card h2 {
+  font-family: var(--font-serif); font-weight: 600; font-size: 1.28rem;
+  line-height: 1.32; margin: 12px 0 10px; color: var(--text-1);
+}
+.post-card p { color: var(--text-2); font-size: 0.94rem; line-height: 1.7; }
+.post-meta {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 9px;
+  font-size: 0.78rem; color: var(--text-3);
+}
+.post-badge {
+  padding: 3px 9px; border-radius: 999px; font-weight: 600;
+  font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+  background: var(--gold-dim); color: var(--gold-light);
+  border: 1px solid var(--gold-border);
+}
+.post-more {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 16px;
+  color: var(--gold-light); font-size: 0.86rem; font-weight: 600;
+}
+.post-card:hover .post-more svg { transform: translateX(4px); }
+.post-more svg { transition: transform var(--tr-fast); }
+
+.blog-empty {
+  max-width: 640px; margin: 0 auto; padding: 56px 40px; text-align: center;
+  background: var(--glass); border: 1px dashed var(--border-md);
+  border-radius: var(--r-lg);
+}
+.blog-empty h2 {
+  font-family: var(--font-serif); font-weight: 600;
+  font-size: 1.5rem; margin-bottom: 14px;
+}
+.blog-empty p { color: var(--text-2); line-height: 1.75; margin-bottom: 26px; }
+
+.post .page-hero .post-meta { margin-top: 18px; }
+.post-body { padding-bottom: var(--section-py); }
+.demo-note {
+  max-width: 74ch; margin-bottom: 30px; padding: 14px 18px;
+  border-left: 3px solid var(--gold); background: var(--gold-dim);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  color: var(--text-2); font-size: 0.9rem; line-height: 1.65;
+}
+.post-back {
+  display: inline-block; margin-top: 34px;
+  color: var(--gold-light); font-size: 0.92rem; font-weight: 600;
+}
+.post-back:hover { text-decoration: underline; }
+
+@media (max-width: 900px) { .post-grid { grid-template-columns: 1fr; } }

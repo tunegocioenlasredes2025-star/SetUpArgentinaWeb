@@ -43,7 +43,7 @@ SERVICE_KEYS = ["formation", "accounting", "advisory", "represent"]
 
 # El blog se construye pero todavia no se enlaza en el menu ni entra al
 # sitemap: arranca sin notas y un /blog vacio juega en contra.
-BLOG_PUBLIC = False
+BLOG_PUBLIC = True
 
 LANG_INDEX = {"en": 0, "es": 1}
 
