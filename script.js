@@ -190,64 +190,130 @@ document.addEventListener('DOMContentLoaded', () => {
     firstAnswer.style.maxHeight = firstAnswer.scrollHeight + 'px';
   }
 
-  /* ─── CONTACT FORM — Façade (activar backend después) ── */
-  const form        = document.getElementById('contactForm');
-  const formSuccess = document.getElementById('formSuccess');
+  /* ─── FORMULARIO DE CONTACTO ──────────────────────────
+     Antes esto era una fachada: armaba un texto y abria WhatsApp con
+     window.open dentro de un setTimeout. Los navegadores bloquean esa
+     ventana porque ya esta fuera del gesto del usuario, y la consulta
+     se perdia sin que nadie se enterara, mientras el visitante veia un
+     cartel de exito.
+
+     Ahora la consulta se GUARDA primero en la base, y despues se le
+     ofrece al visitante seguir por WhatsApp con un link real que el
+     toca. Aunque nunca lo toque, el contacto ya quedo registrado.   */
+  const SUPABASE_URL = 'https://tvxhhbonqzabnwwpayet.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_M-qp7enm2WJrT2l1e1bL3g_N57jtYAH';
+  const WA_NUMBER    = '5491125637925';
+
+  const form = document.getElementById('contactForm');
 
   if (form) {
-    form.addEventListener('submit', (e) => {
+    const lang = form.dataset.lang || (document.documentElement.lang || 'en').slice(0, 2);
+    const T = lang === 'es' ? {
+      enviando: 'Enviando...',
+      okTitulo: 'Recibimos tu consulta.',
+      okTexto: 'Te respondemos dentro de las 24 horas hábiles.',
+      wa: 'Seguir por WhatsApp ahora',
+      errorTitulo: 'No pudimos guardar tu consulta.',
+      errorTexto: 'Escribinos directo por WhatsApp y lo resolvemos al toque.',
+      faltan: 'Completá tu nombre y tu email.',
+      mailMal: 'Revisá el email, parece que tiene un error.'
+    } : {
+      enviando: 'Sending...',
+      okTitulo: 'We got your message.',
+      okTexto: 'We will reply within 24 business hours.',
+      wa: 'Continue on WhatsApp now',
+      errorTitulo: 'We could not save your message.',
+      errorTexto: 'Write to us directly on WhatsApp and we will sort it out.',
+      faltan: 'Please add your name and email.',
+      mailMal: 'That email address looks incorrect.'
+    };
+
+    const val = (id) => {
+      const el = form.querySelector('#' + id);
+      return el ? el.value.trim() : '';
+    };
+
+    const NL = String.fromCharCode(10);
+
+    const mensajeWhatsApp = () => {
+      const l = [
+        (lang === 'es' ? 'Hola, soy ' : 'Hi, my name is ') + val('name')
+          + (val('company') ? (lang === 'es' ? ' de ' : ' from ') + val('company') : '') + '.',
+        val('country') ? 'Country: ' + val('country') : '',
+        val('service') ? (lang === 'es' ? 'Servicio: ' : 'Service: ') + val('service') : '',
+        val('message') ? NL + val('message') : ''
+      ].filter(Boolean).join(NL);
+      return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(l);
+    };
+
+    const mostrarResultado = (ok) => {
+      const wa = mensajeWhatsApp();
+      form.innerHTML =
+        '<div class="form-result ' + (ok ? 'is-ok' : 'is-error') + '">'
+        + '<h3>' + (ok ? T.okTitulo : T.errorTitulo) + '</h3>'
+        + '<p>' + (ok ? T.okTexto : T.errorTexto) + '</p>'
+        + '<a class="btn-primary" href="' + wa + '" target="_blank" rel="noopener">'
+        + T.wa + '</a></div>';
+    };
+
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      const name    = form.querySelector('#name').value.trim();
-      const email   = form.querySelector('#email').value.trim();
-      const country = form.querySelector('#country').value;
-
-      if (!name || !email || !country) {
+      const nombre = val('name');
+      const email  = val('email');
+      if (!nombre || !email) {
         shakeForm(form);
         highlightRequired(form);
         return;
       }
       if (!isValidEmail(email)) {
-        form.querySelector('#email').style.borderColor = '#EF4444';
+        const campo = form.querySelector('#email');
+        campo.style.borderColor = '#EF4444';
+        campo.focus();
         return;
       }
 
-      const submitBtn = form.querySelector('.btn-form-submit');
-      const btnText   = submitBtn.querySelector('.btn-text');
-      submitBtn.disabled = true;
-      btnText.textContent = 'Sending...';
+      const btn  = form.querySelector('.btn-form-submit');
+      const texto = btn ? btn.querySelector('.btn-text') : null;
+      const original = texto ? texto.textContent : '';
+      if (btn) btn.disabled = true;
+      if (texto) texto.textContent = T.enviando;
 
-      const service  = form.querySelector('#service')?.value || '';
-      const message  = form.querySelector('#message')?.value.trim() || '';
-      const company  = form.querySelector('#company')?.value.trim() || '';
-      const phone    = form.querySelector('#phone')?.value.trim() || '';
-
-      const lines = [
-        `Hi, my name is *${name}*${company ? ` from ${company}` : ''}.`,
-        `Country: ${country}`,
-        service  ? `Service needed: ${service}` : '',
-        phone    ? `Phone: ${phone}` : '',
-        message  ? `\n${message}` : '',
-      ].filter(Boolean).join('\n');
-
-      const waNumber = '5491125637925';
-      const waUrl    = `https://wa.me/${waNumber}?text=${encodeURIComponent(lines)}`;
-
-      setTimeout(() => {
-        form.reset();
-        submitBtn.disabled = false;
-        btnText.textContent = 'Book Free Consultation';
-        window.open(waUrl, '_blank');
-      }, 800);
+      try {
+        const resp = await fetch(SUPABASE_URL + '/rest/v1/leads', {
+          method: 'POST',
+          headers: {
+            apikey: SUPABASE_KEY,
+            Authorization: 'Bearer ' + SUPABASE_KEY,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            name: nombre,
+            email: email,
+            company: val('company') || null,
+            phone: val('phone') || null,
+            country: val('country') || null,
+            service: val('service') || null,
+            message: val('message') || null,
+            lang: lang,
+            source: location.pathname
+          })
+        });
+        mostrarResultado(resp.ok);
+      } catch (err) {
+        // Sin internet o con la base caida igual le damos salida al visitante.
+        mostrarResultado(false);
+      }
     });
 
-    form.querySelectorAll('input, select, textarea').forEach(field => {
-      field.addEventListener('input', () => {
-        field.style.borderColor = '';
-        field.style.boxShadow  = '';
+    form.querySelectorAll('input, select, textarea').forEach((campo) => {
+      campo.addEventListener('input', () => {
+        campo.style.borderColor = '';
+        campo.style.boxShadow = '';
       });
     });
   }
+
 
   const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 

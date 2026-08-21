@@ -381,3 +381,87 @@ on($('deleteBtn'), 'click', async () => {
 });
 
 arrancar();
+
+/* ═══════════ CONSULTAS ═══════════
+   Lo que entra por el formulario del sitio. La base solo deja leerlas a
+   un usuario logueado: si fueran publicas, cualquiera con la clave del
+   sitio se llevaria la lista de contactos del cliente.                  */
+
+function vistaConsultas(mostrar) {
+  $('leadsView').classList.toggle('hidden', !mostrar);
+  $('listView').classList.toggle('hidden', mostrar);
+  $('editView').classList.add('hidden');
+  $('navLeads').classList.toggle('active', mostrar);
+  $('navPosts').classList.toggle('active', !mostrar);
+  if (mostrar) cargarConsultas();
+  else cargarLista();
+}
+
+on($('navLeads'), 'click', () => vistaConsultas(true));
+on($('navPosts'), 'click', () => vistaConsultas(false));
+
+async function cargarConsultas() {
+  const cont = $('leadList');
+  cont.innerHTML = '<p style="color:var(--text-3)">Cargando...</p>';
+
+  const { data, error } = await db.from('leads')
+    .select('*').order('created_at', { ascending: false });
+
+  if (error) {
+    cont.innerHTML = '<div class="empty">No pudimos leer las consultas: '
+                   + error.message + '</div>';
+    return;
+  }
+  if (!data.length) {
+    cont.innerHTML = '<div class="empty"><strong>Todavía no entró ninguna consulta.</strong>'
+      + '<br>Cuando alguien complete el formulario del sitio, aparece acá.</div>';
+    $('leadsBadge').textContent = '';
+    return;
+  }
+
+  const nuevas = data.filter((l) => l.status === 'new').length;
+  $('leadsBadge').textContent = nuevas || '';
+
+  cont.innerHTML = data.map((l) => {
+    const fecha = new Date(l.created_at).toLocaleString('es-AR',
+      { day: '2-digit', month: '2-digit', year: 'numeric',
+        hour: '2-digit', minute: '2-digit' });
+    const meta = [fecha, l.lang ? l.lang.toUpperCase() : null, l.country,
+                  l.company, l.source].filter(Boolean);
+    const tel = (l.phone || '').replace(/[^0-9]/g, '');
+    const etiqueta = { new: 'Nueva', contacted: 'Contactada',
+                       archived: 'Archivada' }[l.status];
+    return `<div class="lead ${l.status === 'new' ? 'is-new' : ''}">
+      <div class="lead-head">
+        <strong>${escapar(l.name)}</strong>
+        <span class="pill ${l.status === 'new' ? 'scheduled' : 'draft'}">${etiqueta}</span>
+        ${l.service ? `<span class="pill lang">${escapar(l.service)}</span>` : ''}
+      </div>
+      <div class="lead-meta">${meta.map(escapar).join(' · ')}</div>
+      ${l.message ? `<div class="lead-msg">${escapar(l.message)}</div>` : ''}
+      <div class="lead-actions">
+        <a href="mailto:${escapar(l.email)}">${escapar(l.email)}</a>
+        ${tel ? `<a href="https://wa.me/${tel}" target="_blank" rel="noopener">WhatsApp</a>` : ''}
+        ${l.status === 'new'
+          ? `<button data-contactada="${l.id}">Marcar como contactada</button>` : ''}
+        <button data-archivar="${l.id}">Archivar</button>
+      </div>
+    </div>`;
+  }).join('');
+
+  cont.querySelectorAll('[data-contactada]').forEach((b) => {
+    on(b, 'click', () => cambiarEstado(b.dataset.contactada, 'contacted'));
+  });
+  cont.querySelectorAll('[data-archivar]').forEach((b) => {
+    on(b, 'click', () => cambiarEstado(b.dataset.archivar, 'archived'));
+  });
+}
+
+async function cambiarEstado(id, estado) {
+  const { error } = await db.from('leads').update({ status: estado }).eq('id', id);
+  if (error) {
+    alert('No se pudo actualizar: ' + error.message);
+    return;
+  }
+  cargarConsultas();
+}

@@ -123,6 +123,25 @@
   .cover-preview{width:100%;border-radius:9px;margin-bottom:10px;display:block}
   .sticky{position:sticky;top:80px}
 
+  .tab-top{padding:7px 14px;border-radius:8px;color:var(--text-3);font-size:.88rem;font-weight:600}
+  .tab-top:hover{color:var(--text-1)}
+  .tab-top.active{background:var(--gold-dim);color:var(--gold-light)}
+  .badge{display:inline-block;min-width:18px;padding:1px 6px;border-radius:99px;
+    background:var(--gold);color:#12161f;font-size:.68rem;font-weight:700;margin-left:4px}
+  .badge:empty{display:none}
+  .lead{padding:18px 20px;background:var(--bg-card);border:1px solid var(--border);
+    border-radius:var(--r);margin-bottom:10px}
+  .lead.is-new{border-color:var(--gold-border)}
+  .lead-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+  .lead-head strong{font-size:1rem}
+  .lead-meta{color:var(--text-3);font-size:.8rem;display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+  .lead-msg{color:var(--text-2);font-size:.92rem;line-height:1.65;white-space:pre-wrap;
+    padding:12px 14px;background:var(--bg-1);border-radius:9px;margin-bottom:12px}
+  .lead-actions{display:flex;gap:8px;flex-wrap:wrap}
+  .lead-actions a,.lead-actions button{padding:7px 13px;border-radius:8px;font-size:.83rem;
+    font-weight:600;border:1px solid var(--border-md);color:var(--text-2)}
+  .lead-actions a:hover,.lead-actions button:hover{border-color:var(--gold-border);color:var(--text-1)}
+
   @media(max-width:900px){
     .editor-grid{grid-template-columns:1fr}
     .sticky{position:static}
@@ -156,6 +175,8 @@
   <header class="topbar">
     <div class="brand" style="font-size:1.1rem">Set<em>UP</em> · Blog</div>
     <div class="topbar-actions">
+      <button class="tab-top active" id="navPosts">Notas</button>
+      <button class="tab-top" id="navLeads">Consultas <span class="badge" id="leadsBadge"></span></button>
       <span class="who" id="who"></span>
       <button class="btn btn-ghost" id="logoutBtn">Salir</button>
     </div>
@@ -172,6 +193,14 @@
         <button class="btn btn-primary" id="newBtn">+ Nueva nota</button>
       </div>
       <div id="postList"></div>
+    </section>
+
+    <!-- Consultas -->
+    <section id="leadsView" class="hidden">
+      <h1 class="page-title">Consultas</h1>
+      <p class="page-sub">Todo lo que entra por el formulario del sitio queda acá,
+         aunque la persona no haya seguido por WhatsApp.</p>
+      <div id="leadList"></div>
     </section>
 
     <!-- Editor -->
