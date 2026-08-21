@@ -21,9 +21,8 @@ LABELS = {
         "cta_text": ("Book a free initial consultation and get a personalized roadmap "
                      "for doing business in Argentina."),
         "index_title": "Corporate Services in Argentina | SetUp Argentina",
-        "index_desc": ("Company formation, accounting and tax compliance, ongoing business "
-                       "and legal advisory, and legal representation with registered office. "
-                       "One firm for the whole journey, fully remote."),
+        "index_desc": ("Company formation, accounting and tax compliance, ongoing legal "
+                       "advisory and registered office. One firm, fully remote."),
         "index_tag": "What We Do",
         "index_h1": "End-to-End Corporate Services",
         "index_lead": ("From company registration to ongoing advisory, SetUp is your "
@@ -46,8 +45,7 @@ LABELS = {
                      "personalizada para tu empresa en Argentina."),
         "index_title": "Servicios corporativos en Argentina | SetUp Argentina",
         "index_desc": ("Constitución de sociedades, contabilidad e impuestos, asesoramiento "
-                       "empresarial y legal continuo, y representación legal con domicilio "
-                       "fiscal. Un solo estudio para todo el camino, todo online."),
+                       "continuo y domicilio fiscal. Un solo estudio, todo online."),
         "index_tag": "Qué hacemos",
         "index_h1": "Servicios corporativos de punta a punta",
         "index_lead": ("Desde la constitución hasta el acompañamiento continuo, SetUp es "
@@ -90,9 +88,8 @@ SERVICES = {
     "formation": {
         "en": {
             "title": "Company Formation in Argentina (SRL, SAS, SA) | SetUp Argentina",
-            "desc": ("Set up your company in Argentina 100% remotely. SRL, SAS and SA "
-                     "incorporation for local and international companies, with tax "
-                     "registration and foreign shareholders handled."),
+            "desc": ("Set up your company in Argentina 100% remotely. SRL, SAS and SA, "
+                     "with tax registration and foreign shareholders handled."),
             "h1": "Company Formation in Argentina",
             "intro": ("Setting up a company in Argentina involves several moving parts: "
                       "choosing the right vehicle, drafting bylaws that comply with local "
@@ -133,7 +130,7 @@ SERVICES = {
                     "from startups to established groups."),
         },
         "es": {
-            "title": "Constitución de sociedades en Argentina (SRL, SAS, SA) | SetUp Argentina",
+            "title": "Constitución de sociedades: SRL, SAS y SA | SetUp",
             "desc": ("Constituí tu empresa en Argentina 100% online. SRL, SAS y SA, con la "
                      "inscripción impositiva y los socios extranjeros resueltos. Primera "
                      "consulta sin cargo."),
@@ -178,9 +175,8 @@ SERVICES = {
     "accounting": {
         "en": {
             "title": "Accounting, Tax and Compliance in Argentina | SetUp Argentina",
-            "desc": ("Ongoing accounting, tax filings and corporate compliance for your "
-                     "Argentine company. VAT, Turnover Tax and Income Tax, plus annual "
-                     "filings and payroll, handled monthly."),
+            "desc": ("Monthly accounting, tax filings and corporate compliance for your "
+                     "Argentine company. VAT, Turnover Tax and Income Tax, handled."),
             "h1": "Accounting, Tax and Compliance in Argentina",
             "intro": ("Once your company is operating, staying compliant in Argentina is a "
                       "monthly job: VAT, Turnover Tax and Income Tax filings, bookkeeping, "
@@ -203,7 +199,7 @@ SERVICES = {
                     "accounting and tax compliance."),
         },
         "es": {
-            "title": "Contabilidad, impuestos y cumplimiento en Argentina | SetUp Argentina",
+            "title": "Contabilidad, impuestos y cumplimiento | SetUp Argentina",
             "desc": ("Contabilidad mensual, impuestos y obligaciones societarias de tu "
                      "empresa. IVA, Ingresos Brutos, Ganancias e IGJ, todo al día. "
                      "Planes a medida."),
@@ -282,7 +278,7 @@ SERVICES = {
     },
     "represent": {
         "en": {
-            "title": "Legal Representative and Registered Office in Argentina | SetUp Argentina",
+            "title": "Legal Representative and Registered Office | SetUp",
             "desc": ("We provide the locally-resident legal representative and registered "
                      "office your Argentine company needs to stay compliant, with no local "
                      "staff required."),
@@ -307,7 +303,7 @@ SERVICES = {
                     "or an outsourced registered office and legal representative."),
         },
         "es": {
-            "title": "Representación legal y domicilio fiscal en Argentina | SetUp Argentina",
+            "title": "Representación legal y domicilio fiscal | SetUp Argentina",
             "desc": ("Proveemos el representante legal residente y el domicilio fiscal que "
                      "tu empresa necesita para estar en regla, sin que necesites personal "
                      "local."),

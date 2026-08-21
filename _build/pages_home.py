@@ -18,7 +18,7 @@ from site_cfg import SITE, EMAIL, url
 
 COPY = {
     "en": {
-        "title": "Company Formation, Legal and Accounting Services in Argentina | SetUp",
+        "title": "Company Formation and Accounting in Argentina | SetUp",
         "desc": ("Set up and run your company in Argentina 100% remotely. Company "
                  "formation, tax, accounting and ongoing business and legal advisory. "
                  "Specialists in foreign companies."),
@@ -161,7 +161,7 @@ COPY = {
         "learn": "Learn more",
     },
     "es": {
-        "title": "Constitución de empresas, servicios legales y contables | SetUp Argentina",
+        "title": "Constitución de empresas y contabilidad | SetUp Argentina",
         "desc": ("Constituí tu empresa, llevá tu contabilidad y contá con asesoramiento "
                  "empresarial y legal continuo. Estudio jurídico-contable, todo online. "
                  "Consulta sin cargo."),

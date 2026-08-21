@@ -14,10 +14,9 @@ from site_cfg import SITE, url
 
 COPY = {
     "en": {
-        "title": "Partner With Us | Local Execution in Argentina for Law and Accounting Firms",
+        "title": "Partner With Us | Local Execution in Argentina",
         "desc": ("If your clients are expanding into Argentina, partner with a reliable "
-                 "local team. We handle company formation, tax, compliance and legal "
-                 "advisory, while you keep the relationship with your client."),
+                 "local team. We handle the local execution, you keep the client."),
         "crumbs": [("Home", "/"), ("Partners", None)],
         "tag": "Partners",
         "h1": "Are you a law or accounting firm?",
@@ -55,8 +54,7 @@ COPY = {
     "es": {
         "title": "Trabajemos juntos | Ejecución local en Argentina para estudios",
         "desc": ("Si tus clientes se expanden a Argentina, sumate a un equipo local "
-                 "confiable. Nos ocupamos de la constitución, impuestos, cumplimiento y "
-                 "asesoramiento, mientras vos mantenés la relación con tu cliente."),
+                 "confiable. Nos ocupamos de la ejecución local, vos del cliente."),
         "crumbs": [("Inicio", "/es/"), ("Partners", None)],
         "tag": "Partners",
         "h1": "¿Sos un estudio jurídico o contable?",

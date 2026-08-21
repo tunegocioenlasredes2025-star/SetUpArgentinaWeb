@@ -10,8 +10,8 @@ COPY = {
     "en": {
         "title": "About SetUp Argentina | Agustín Sofía, Founder and Lead Advisor",
         "desc": ("Corporate lawyer with over 10 years of experience, admitted to the "
-                 "Buenos Aires City Bar Association, with postgraduate studies at UCA, "
-                 "Universidad Austral and UCEMA, and experience at Accenture and Biz Latin Hub."),
+                 "Buenos Aires City Bar Association, with experience at Accenture "
+                 "and Biz Latin Hub."),
         "crumbs": [("Home", "/"), ("About", None)],
         "tag": "Your Advisor",
         "h1": "Meet Agustín Sofía",
@@ -46,9 +46,9 @@ COPY = {
     },
     "es": {
         "title": "Nosotros | Agustín Sofía, fundador de SetUp Argentina",
-        "desc": ("Abogado corporativo con más de 10 años de experiencia, matriculado en el "
-                 "Colegio Público de Abogados de la Capital Federal, con posgrados en UCA, "
-                 "Universidad Austral y UCEMA, y experiencia en Accenture y Biz Latin Hub."),
+        "desc": ("Abogado corporativo con más de 10 años de experiencia, matriculado en "
+                 "el Colegio Público de Abogados, con experiencia en Accenture y "
+                 "Biz Latin Hub."),
         "crumbs": [("Inicio", "/es/"), ("Nosotros", None)],
         "tag": "Tu asesor",
         "h1": "Agustín Sofía",

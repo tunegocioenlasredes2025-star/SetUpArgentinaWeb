@@ -32,9 +32,8 @@ WA_ICON = ('<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" 
 COPY = {
     "en": {
         "title": "Contact SetUp Argentina | Free Initial Consultation",
-        "desc": ("Tell us about your project and we will reply within 24 business hours. "
-                 "The initial consultation is free and handled directly by a licensed "
-                 "professional in Buenos Aires."),
+        "desc": ("Tell us about your project and we reply within 24 business hours. "
+                 "The initial consultation is free, with a licensed professional."),
         "crumbs": [("Home", "/"), ("Contact", None)],
         "tag": "Contact",
         "h1": "Let's Talk About Your Business",

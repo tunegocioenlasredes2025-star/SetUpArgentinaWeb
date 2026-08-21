@@ -89,6 +89,10 @@ def main():
     for path, html in pages_blog.build_articles():
         written.append(write_raw(path, html))
 
+    import seo_files
+    for path, contenido in seo_files.build_files():
+        written.append(write_raw(path, contenido))
+
     print("\n%d paginas generadas:" % len(written))
     for w in sorted(written):
         print("  ", w)

@@ -13,8 +13,7 @@ COPY = {
     "en": {
         "title": "Frequently Asked Questions | SetUp Argentina",
         "desc": ("How long incorporation takes, whether you need to travel, which "
-                 "structure to choose, foreign ownership, capital requirements and "
-                 "taxes. The questions we are asked most often."),
+                 "structure to choose, capital and taxes. The questions we get most."),
         "crumbs": [("Home", "/"), ("FAQ", None)],
         "tag": "FAQ",
         "h1": "Frequently Asked Questions",
@@ -68,8 +67,7 @@ COPY = {
     "es": {
         "title": "Preguntas frecuentes | SetUp Argentina",
         "desc": ("Cuánto tarda constituir, si hace falta viajar, qué estructura conviene, "
-                 "capital mínimo e impuestos. Las preguntas que más nos hacen sobre "
-                 "constituir y operar una empresa en Argentina."),
+                 "capital mínimo e impuestos. Las preguntas que más nos hacen."),
         "crumbs": [("Inicio", "/es/"), ("Preguntas frecuentes", None)],
         "tag": "Preguntas frecuentes",
         "h1": "Preguntas frecuentes",
