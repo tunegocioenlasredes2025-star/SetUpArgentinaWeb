@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Panel del blog — SetUp Argentina</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-0:#060C1C; --bg-1:#0A1428; --bg-2:#0D1B38; --bg-card:#0F1F40;
+    --gold:#C9952F; --gold-light:#E4B04A; --gold-dim:rgba(201,149,47,.12);
+    --gold-border:rgba(201,149,47,.28);
+    --text-1:#F0F4FC; --text-2:#B8C5D6; --text-3:#6B7E96;
+    --border:rgba(255,255,255,.08); --border-md:rgba(255,255,255,.14);
+    --ok:#22c55e; --danger:#ef4444;
+    --r:12px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg-0);color:var(--text-1);font-family:Inter,system-ui,sans-serif;
+       line-height:1.6;font-size:15px;-webkit-font-smoothing:antialiased}
+  a{color:var(--gold-light);text-decoration:none}
+  button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+  input,textarea,select{font:inherit}
+
+  .hidden{display:none !important}
+
+  /* ── Login ─────────────────────────── */
+  .login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+  .login-card{width:100%;max-width:400px;background:var(--bg-card);border:1px solid var(--border-md);
+              border-radius:18px;padding:38px 34px}
+  .brand{font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:6px}
+  .brand em{color:var(--gold);font-style:normal}
+  .login-sub{color:var(--text-3);font-size:.9rem;margin-bottom:26px}
+
+  label{display:block;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;
+        color:var(--text-3);margin-bottom:7px;font-weight:600}
+  .field{margin-bottom:16px}
+  input[type=text],input[type=email],input[type=password],input[type=date],textarea,select{
+    width:100%;padding:11px 13px;background:var(--bg-1);color:var(--text-1);
+    border:1px solid var(--border-md);border-radius:9px;transition:border-color .18s}
+  input:focus,textarea:focus,select:focus{outline:none;border-color:var(--gold)}
+  textarea{resize:vertical;min-height:80px}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+       padding:11px 20px;border-radius:9px;font-weight:600;font-size:.9rem;transition:all .18s}
+  .btn-primary{background:var(--gold);color:#12161f}
+  .btn-primary:hover{background:var(--gold-light)}
+  .btn-ghost{border:1px solid var(--border-md);color:var(--text-2)}
+  .btn-ghost:hover{border-color:var(--gold-border);color:var(--text-1)}
+  .btn-danger{color:#fca5a5;border:1px solid rgba(239,68,68,.35)}
+  .btn-danger:hover{background:rgba(239,68,68,.12)}
+  .btn-block{width:100%}
+  .btn:disabled{opacity:.5;cursor:not-allowed}
+
+  .msg{margin-top:14px;padding:11px 14px;border-radius:9px;font-size:.87rem;display:none}
+  .msg.show{display:block}
+  .msg.error{background:rgba(239,68,68,.12);color:#fca5a5;border:1px solid rgba(239,68,68,.3)}
+  .msg.ok{background:rgba(34,197,94,.12);color:#86efac;border:1px solid rgba(34,197,94,.3)}
+
+  /* ── Layout ────────────────────────── */
+  header.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;
+    padding:14px 26px;border-bottom:1px solid var(--border);background:var(--bg-1);
+    position:sticky;top:0;z-index:20}
+  .topbar-actions{display:flex;align-items:center;gap:10px}
+  .who{color:var(--text-3);font-size:.82rem}
+  main{max-width:1180px;margin:0 auto;padding:28px 26px 80px}
+
+  .page-title{font-family:'Playfair Display',serif;font-size:1.7rem;margin-bottom:4px}
+  .page-sub{color:var(--text-3);font-size:.9rem;margin-bottom:24px}
+  .row-between{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+  /* ── Lista de notas ────────────────── */
+  .post-row{display:flex;align-items:center;gap:16px;padding:16px 18px;background:var(--bg-card);
+    border:1px solid var(--border);border-radius:var(--r);margin-bottom:10px}
+  .post-row:hover{border-color:var(--gold-border)}
+  .post-row h3{font-size:1rem;font-weight:600;margin-bottom:3px}
+  .post-row .meta{color:var(--text-3);font-size:.8rem;display:flex;gap:10px;flex-wrap:wrap}
+  .post-row .grow{flex:1;min-width:0}
+  .pill{padding:3px 9px;border-radius:99px;font-size:.68rem;font-weight:700;
+        letter-spacing:.08em;text-transform:uppercase}
+  .pill.draft{background:rgba(148,163,184,.15);color:var(--text-2)}
+  .pill.published{background:rgba(34,197,94,.15);color:#86efac}
+  .pill.scheduled{background:var(--gold-dim);color:var(--gold-light)}
+  .pill.lang{background:rgba(255,255,255,.06);color:var(--text-3)}
+
+  .empty{padding:52px 30px;text-align:center;border:1px dashed var(--border-md);
+         border-radius:var(--r);color:var(--text-3)}
+
+  /* ── Editor ────────────────────────── */
+  .tabs{display:flex;gap:6px;margin-bottom:20px;border-bottom:1px solid var(--border)}
+  .tab{padding:10px 18px;color:var(--text-3);font-weight:600;font-size:.9rem;
+       border-bottom:2px solid transparent;margin-bottom:-1px}
+  .tab.active{color:var(--gold-light);border-bottom-color:var(--gold)}
+  .tab .dot{display:inline-block;width:6px;height:6px;border-radius:50%;
+            background:var(--ok);margin-left:7px;vertical-align:middle}
+
+  .editor-grid{display:grid;grid-template-columns:1fr 300px;gap:26px;align-items:start}
+  .panel{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);padding:22px}
+  .panel h4{font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;
+            color:var(--gold);margin-bottom:16px;font-weight:700}
+
+  .toolbar{display:flex;flex-wrap:wrap;gap:5px;padding:8px;background:var(--bg-1);
+    border:1px solid var(--border-md);border-bottom:none;border-radius:9px 9px 0 0}
+  .toolbar button{padding:6px 11px;border-radius:6px;font-size:.82rem;color:var(--text-2);
+    border:1px solid transparent}
+  .toolbar button:hover{background:var(--bg-2);color:var(--text-1);border-color:var(--border-md)}
+  .rich{min-height:320px;padding:16px 18px;background:var(--bg-1);color:var(--text-1);
+    border:1px solid var(--border-md);border-radius:0 0 9px 9px;overflow-y:auto;line-height:1.75}
+  .rich:focus{outline:none;border-color:var(--gold)}
+  .rich:empty::before{content:attr(data-placeholder);color:var(--text-3)}
+  .rich h2{font-family:'Playfair Display',serif;font-size:1.3rem;margin:22px 0 10px}
+  .rich p{margin-bottom:12px}
+  .rich ul,.rich ol{margin:0 0 14px 22px}
+  .rich blockquote{border-left:3px solid var(--gold);padding-left:14px;margin:14px 0;
+    color:var(--text-2);font-style:italic}
+  .rich img{max-width:100%;border-radius:9px;margin:14px 0}
+  .rich a{text-decoration:underline}
+
+  .hint{color:var(--text-3);font-size:.78rem;margin-top:6px}
+  .cover-preview{width:100%;border-radius:9px;margin-bottom:10px;display:block}
+  .sticky{position:sticky;top:80px}
+
+  @media(max-width:900px){
+    .editor-grid{grid-template-columns:1fr}
+    .sticky{position:static}
+    main{padding:20px 16px 60px}
+    header.topbar{padding:12px 16px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ LOGIN ═══════════ -->
+<div class="login-wrap" id="loginView">
+  <form class="login-card" id="loginForm">
+    <div class="brand">Set<em>UP</em> Argentina</div>
+    <p class="login-sub">Panel del blog</p>
+    <div class="field">
+      <label for="email">Email</label>
+      <input type="email" id="email" autocomplete="username" required>
+    </div>
+    <div class="field">
+      <label for="password">Contraseña</label>
+      <input type="password" id="password" autocomplete="current-password" required>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block" id="loginBtn">Entrar</button>
+    <div class="msg" id="loginMsg"></div>
+  </form>
+</div>
+
+<!-- ═══════════ APP ═══════════ -->
+<div class="hidden" id="appView">
+  <header class="topbar">
+    <div class="brand" style="font-size:1.1rem">Set<em>UP</em> · Blog</div>
+    <div class="topbar-actions">
+      <span class="who" id="who"></span>
+      <button class="btn btn-ghost" id="logoutBtn">Salir</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Listado -->
+    <section id="listView">
+      <div class="row-between" style="margin-bottom:24px">
+        <div>
+          <h1 class="page-title">Tus notas</h1>
+          <p class="page-sub">Escribí, guardá como borrador y publicá cuando quieras.</p>
+        </div>
+        <button class="btn btn-primary" id="newBtn">+ Nueva nota</button>
+      </div>
+      <div id="postList"></div>
+    </section>
+
+    <!-- Editor -->
+    <section id="editView" class="hidden">
+      <div class="row-between" style="margin-bottom:20px">
+        <button class="btn btn-ghost" id="backBtn">← Volver</button>
+        <div class="topbar-actions">
+          <button class="btn btn-danger hidden" id="deleteBtn">Borrar</button>
+          <button class="btn btn-ghost" id="saveBtn">Guardar borrador</button>
+          <button class="btn btn-primary" id="publishBtn">Publicar</button>
+        </div>
+      </div>
+      <div class="msg" id="editMsg"></div>
+
+      <div class="tabs">
+        <button class="tab active" data-lang="es">Español <span class="dot hidden" id="dotEs"></span></button>
+        <button class="tab" data-lang="en">English <span class="dot hidden" id="dotEn"></span></button>
+      </div>
+
+      <div class="editor-grid">
+        <div>
+          <div class="field">
+            <label for="title">Título</label>
+            <input type="text" id="title" placeholder="El título de la nota">
+          </div>
+          <div class="field">
+            <label for="excerpt">Resumen</label>
+            <textarea id="excerpt" rows="2"
+              placeholder="Dos líneas que se ven en el listado y en Google."></textarea>
+          </div>
+          <div class="field">
+            <label>Texto</label>
+            <div class="toolbar">
+              <button type="button" data-cmd="bold"><b>N</b></button>
+              <button type="button" data-cmd="italic"><i>C</i></button>
+              <button type="button" data-block="h2">Título</button>
+              <button type="button" data-block="p">Párrafo</button>
+              <button type="button" data-cmd="insertUnorderedList">• Lista</button>
+              <button type="button" data-cmd="insertOrderedList">1. Lista</button>
+              <button type="button" data-block="blockquote">Cita</button>
+              <button type="button" id="linkBtn">Link</button>
+              <button type="button" id="imgBtn">Imagen</button>
+              <button type="button" data-cmd="removeFormat">Limpiar</button>
+            </div>
+            <div class="rich" id="body" contenteditable="true"
+                 data-placeholder="Escribí acá. Las imágenes también se pueden arrastrar."></div>
+            <p class="hint">Podés arrastrar una imagen directamente sobre el texto.</p>
+          </div>
+        </div>
+
+        <aside class="sticky">
+          <div class="panel" style="margin-bottom:16px">
+            <h4>Publicación</h4>
+            <div class="field">
+              <label for="status">Estado</label>
+              <select id="status">
+                <option value="draft">Borrador</option>
+                <option value="published">Publicada</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="publishedAt">Fecha</label>
+              <input type="date" id="publishedAt">
+              <p class="hint">Si ponés una fecha futura, la nota queda programada
+                 y aparece sola ese día.</p>
+            </div>
+          </div>
+
+          <div class="panel" style="margin-bottom:16px">
+            <h4>Dirección web</h4>
+            <div class="field">
+              <label for="slug">Slug</label>
+              <input type="text" id="slug" placeholder="se-genera-solo">
+              <p class="hint" id="slugHint"></p>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h4>Imagen de portada</h4>
+            <img class="cover-preview hidden" id="coverPreview" alt="">
+            <input type="file" id="coverInput" accept="image/*" class="hidden">
+            <button class="btn btn-ghost btn-block" id="coverBtn">Subir imagen</button>
+            <button class="btn btn-danger btn-block hidden" id="coverRemove"
+                    style="margin-top:8px">Quitar</button>
+            <div class="field" style="margin-top:14px">
+              <label for="coverAlt">Descripción de la imagen</label>
+              <input type="text" id="coverAlt" placeholder="Para accesibilidad y Google">
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="/admin/config.js"></script>
+<script type="module" src="/admin/app.js"></script>
+</body>
+</html>

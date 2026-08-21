@@ -11,9 +11,8 @@ Las notas de ejemplo salen con noindex para que Google no las levante.
 
 import render
 from chrome import ARROW_SVG, cta_band
+from posts_source import fetch_posts
 from site_cfg import SITE, url
-
-DEMO = True
 
 LABELS = {
     "en": {
@@ -153,8 +152,37 @@ DEMO_POSTS = [
 ]
 
 
+
+
+def _demo_normalizadas():
+    """Las notas de ejemplo, en el mismo formato que las que vienen de la base."""
+    salida = []
+    for p in DEMO_POSTS:
+        nota = {"slug_en": p["slug_en"], "slug_es": p["slug_es"],
+                "date": p["date"], "cover": None}
+        for lang in ("en", "es"):
+            c = p[lang]
+            html = "".join(
+                ("<h2>%s</h2>" % t) if tag == "h2" else ("<p>%s</p>" % t)
+                for tag, t in c["body"])
+            nota[lang] = {"title": c["title"], "excerpt": c["excerpt"],
+                          "html": html, "read": c["read"], "cover_alt": ""}
+        salida.append(nota)
+    return salida
+
+
+# Las notas reales mandan. Si todavia no hay ninguna publicada, se muestran
+# las de ejemplo para que se vea como queda el blog; en cuanto Agustin
+# publique la primera, las de ejemplo desaparecen solas.
+POSTS = fetch_posts()
+DEMO = not POSTS
+if DEMO:
+    POSTS = _demo_normalizadas()
+
+
 def _post_paths(post):
-    return ("/blog/%s/" % post["slug_en"], "/es/blog/%s/" % post["slug_es"])
+    return ("/blog/%s/" % post["slug_en"] if post["slug_en"] else None,
+            "/es/blog/%s/" % post["slug_es"] if post["slug_es"] else None)
 
 
 def _post_url(post, lang):
@@ -162,45 +190,54 @@ def _post_url(post, lang):
 
 
 def _fmt_date(iso, lang):
+    if not iso:
+        return ""
     y, m, d = iso.split("-")
-    months_en = ["January", "February", "March", "April", "May", "June", "July",
-                 "August", "September", "October", "November", "December"]
-    months_es = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
-                 "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
+    meses_en = ["January", "February", "March", "April", "May", "June", "July",
+                "August", "September", "October", "November", "December"]
+    meses_es = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
+                "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
     if lang == "en":
-        return "%s %d, %s" % (months_en[int(m) - 1], int(d), y)
-    return "%d de %s de %s" % (int(d), months_es[int(m) - 1], y)
+        return "%s %d, %s" % (meses_en[int(m) - 1], int(d), y)
+    return "%d de %s de %s" % (int(d), meses_es[int(m) - 1], y)
+
+
+def _en_idioma(lang):
+    """Notas que existen en ese idioma. Una nota que solo esta en ingles no
+    aparece en el listado en espanol: se oculta en vez de dejar un hueco."""
+    return [p for p in POSTS if p.get(lang) and _post_url(p, lang)]
 
 
 def _listing(lang):
     L = LABELS[lang]
-    posts = DEMO_POSTS if DEMO else []
+    posts = _en_idioma(lang)
 
     if posts:
-        cards = "\n".join(
-            '''      <a href="{href}" class="post-card">
-        <div class="post-meta"><span class="post-badge">{badge}</span>
-          <time datetime="{iso}">{date}</time><span>·</span><span>{read} {min}</span></div>
-        <h2>{title}</h2><p>{excerpt}</p>
-        <span class="post-more">{read_lbl} {arrow}</span></a>'''.format(
-                href=_post_url(p, lang), badge=L["demo_badge"], iso=p["date"],
-                date=_fmt_date(p["date"], lang), read=p[lang]["read"], min=L["min"],
-                title=p[lang]["title"], excerpt=p[lang]["excerpt"],
-                read_lbl=L["read"], arrow=ARROW_SVG)
-            for p in posts)
-        inner = '    <div class="post-grid">\n%s\n    </div>' % cards
+        tarjetas = []
+        for p in posts:
+            c = p[lang]
+            badge = ('<span class="post-badge">%s</span>' % L["demo_badge"]) if DEMO else ""
+            tarjetas.append(
+                '      <a href="%s" class="post-card">\n'
+                '        <div class="post-meta">%s<time datetime="%s">%s</time>'
+                '<span>·</span><span>%s %s</span></div>\n'
+                '        <h2>%s</h2><p>%s</p>\n'
+                '        <span class="post-more">%s %s</span></a>'
+                % (_post_url(p, lang), badge, p["date"], _fmt_date(p["date"], lang),
+                   c["read"], L["min"], c["title"], c["excerpt"], L["read"], ARROW_SVG))
+        inner = '    <div class="post-grid">\n%s\n    </div>' % "\n".join(tarjetas)
     else:
         inner = ('    <div class="blog-empty"><h2>%s</h2><p>%s</p>'
                  '<a href="%s" class="btn-primary"><span>%s</span>%s</a></div>'
                  % (L["empty_h"], L["empty_p"], url("contact", lang),
                     L["cta_btn"], ARROW_SVG))
 
-    body = f'''
+    body = '''
 <header class="page-hero">
   <div class="container">
-    <span class="section-tag" data-animate="fadeInUp">{L["tag"]}</span>
-    <h1 data-animate="fadeInUp">{L["h1"]}</h1>
-    <p class="page-lead" data-animate="fadeInUp">{L["lead"]}</p>
+    <span class="section-tag" data-animate="fadeInUp">{tag}</span>
+    <h1 data-animate="fadeInUp">{h1}</h1>
+    <p class="page-lead" data-animate="fadeInUp">{lead}</p>
   </div>
 </header>
 
@@ -209,7 +246,8 @@ def _listing(lang):
 {inner}
   </div>
 </section>
-'''
+'''.format(tag=L["tag"], h1=L["h1"], lead=L["lead"], inner=inner)
+
     schema = {
         "@context": "https://schema.org",
         "@type": "Blog",
@@ -217,6 +255,9 @@ def _listing(lang):
         "name": L["h1"],
         "description": L["desc"],
         "inLanguage": "en" if lang == "en" else "es-AR",
+        "blogPost": [{"@type": "BlogPosting", "headline": p[lang]["title"],
+                      "url": SITE + _post_url(p, lang), "datePublished": p["date"]}
+                     for p in posts],
     }
     return render.page("blog", lang, title=L["title"], description=L["desc"],
                        body=body + cta_band(lang, L["cta_text"], L["cta_btn"]),
@@ -226,32 +267,41 @@ def _listing(lang):
 def _article(post, lang):
     L = LABELS[lang]
     c = post[lang]
-    paths = _post_paths(post)
-    content = "".join(
-        ("<h2>%s</h2>" % text) if tag == "h2" else ("<p>%s</p>" % text)
-        for tag, text in c["body"])
+    en_path, es_path = _post_paths(post)
+    # Si la nota existe en un solo idioma, el hreflang apunta a la unica
+    # version que hay, en vez de prometer una traduccion que no existe.
+    paths = (en_path or es_path, es_path or en_path)
 
-    demo_banner = ('<p class="demo-note">%s</p>' % L["demo_note"]) if DEMO else ""
+    portada = ""
+    if post.get("cover"):
+        portada = ('<img class="post-cover" src="%s" alt="%s" loading="lazy">'
+                   % (post["cover"], c.get("cover_alt", "")))
+    aviso = ('<p class="demo-note">%s</p>' % L["demo_note"]) if DEMO else ""
 
-    body = f'''
+    body = '''
 <article class="post">
   <header class="page-hero">
     <div class="container">
-      <span class="section-tag">{L["demo_badge"] if DEMO else L["tag"]}</span>
-      <h1>{c["title"]}</h1>
+      <span class="section-tag">{badge}</span>
+      <h1>{titulo}</h1>
       <div class="post-meta">
-        <time datetime="{post["date"]}">{_fmt_date(post["date"], lang)}</time>
-        <span>·</span><span>{c["read"]} {L["min"]}</span>
+        <time datetime="{iso}">{fecha}</time>
+        <span>·</span><span>{read} {min}</span>
       </div>
     </div>
   </header>
   <div class="container post-body">
-    {demo_banner}
-    <div class="prose">{content}</div>
-    <a href="{url("blog", lang)}" class="post-back">{L["back"]}</a>
+    {portada}
+    {aviso}
+    <div class="prose">{contenido}</div>
+    <a href="{blog}" class="post-back">{volver}</a>
   </div>
 </article>
-'''
+'''.format(badge=L["demo_badge"] if DEMO else L["tag"], titulo=c["title"],
+           iso=post["date"], fecha=_fmt_date(post["date"], lang),
+           read=c["read"], min=L["min"], portada=portada, aviso=aviso,
+           contenido=c["html"], blog=url("blog", lang), volver=L["back"])
+
     schema = {
         "@context": "https://schema.org",
         "@type": "Article",
@@ -262,8 +312,11 @@ def _article(post, lang):
         "inLanguage": "en" if lang == "en" else "es-AR",
         "author": {"@type": "Organization", "name": "SetUp Argentina", "url": SITE},
         "publisher": {"@type": "Organization", "name": "SetUp Argentina", "url": SITE},
-        "mainEntityOfPage": SITE + paths[0 if lang == "en" else 1],
+        "mainEntityOfPage": SITE + _post_url(post, lang),
     }
+    if post.get("cover"):
+        schema["image"] = post["cover"]
+
     crumbs = [(L["crumbs"][0][0], url("home", lang)),
               ("Blog", url("blog", lang)), (c["title"], None)]
     return render.page(
@@ -271,7 +324,6 @@ def _article(post, lang):
         description=c["excerpt"],
         body=body + cta_band(lang, L["cta_text"], L["cta_btn"]),
         schema=schema, crumbs=crumbs, paths=paths,
-        # Las notas de ejemplo no deben entrar al indice de Google.
         robots="noindex, follow" if DEMO else "index, follow")
 
 
@@ -281,10 +333,12 @@ def build():
 
 
 def build_articles():
-    """Devuelve (ruta, html) porque las notas no estan en el mapa fijo."""
-    out = []
-    for post in (DEMO_POSTS if DEMO else []):
+    """(ruta, html) por nota: no estan en el mapa fijo de paginas."""
+    salida = []
+    for post in POSTS:
         for lang in ("en", "es"):
-            path = _post_url(post, lang).strip("/") + "/index.html"
-            out.append((path, _article(post, lang)))
-    return out
+            if not post.get(lang) or not _post_url(post, lang):
+                continue
+            ruta = _post_url(post, lang).strip("/") + "/index.html"
+            salida.append((ruta, _article(post, lang)))
+    return salida
