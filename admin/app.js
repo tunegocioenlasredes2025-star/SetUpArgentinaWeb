@@ -465,3 +465,27 @@ async function cambiarEstado(id, estado) {
   }
   cargarConsultas();
 }
+
+/* ═══════════ CAMBIAR CONTRASEÑA ═══════════
+   La primera contraseña la crea quien da de alta el usuario, asi que
+   hace falta que el dueño de la cuenta pueda cambiarla el primer dia.  */
+on($('passBtn'), 'click', async () => {
+  const nueva = prompt('Escribí tu contraseña nueva (mínimo 8 caracteres):');
+  if (nueva === null) return;
+  if (nueva.trim().length < 8) {
+    alert('Tiene que tener al menos 8 caracteres.');
+    return;
+  }
+  const repetir = prompt('Escribila de nuevo para confirmar:');
+  if (repetir === null) return;
+  if (repetir !== nueva) {
+    alert('No coinciden. Probá de nuevo.');
+    return;
+  }
+  const { error } = await db.auth.updateUser({ password: nueva });
+  if (error) {
+    alert('No se pudo cambiar: ' + error.message);
+    return;
+  }
+  alert('Listo, tu contraseña quedó cambiada. La próxima vez entrá con la nueva.');
+});
