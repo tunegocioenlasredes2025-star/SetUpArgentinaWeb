@@ -100,6 +100,20 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://setupargentina.com/services/trademark-registration/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://setupargentina.com/services/trademark-registration/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://setupargentina.com/es/servicios/registro-de-marcas/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://setupargentina.com/services/trademark-registration/"/>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://setupargentina.com/es/servicios/registro-de-marcas/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://setupargentina.com/services/trademark-registration/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://setupargentina.com/es/servicios/registro-de-marcas/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://setupargentina.com/services/trademark-registration/"/>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://setupargentina.com/faq/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://setupargentina.com/faq/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://setupargentina.com/es/preguntas-frecuentes/"/>

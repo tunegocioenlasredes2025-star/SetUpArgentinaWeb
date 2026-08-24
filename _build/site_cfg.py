@@ -33,13 +33,15 @@ PAGES = {
                    "/es/servicios/asesoramiento-empresarial-y-legal/"),
     "represent":  ("/services/legal-representation-and-registered-office/",
                    "/es/servicios/representacion-legal-y-domicilio-fiscal/"),
+    "trademark":  ("/services/trademark-registration/",
+                   "/es/servicios/registro-de-marcas/"),
     "faq":        ("/faq/", "/es/preguntas-frecuentes/"),
     "contact":    ("/contact/", "/es/contacto/"),
     "partners":   ("/partners/", "/es/partners/"),
     "blog":       ("/blog/", "/es/blog/"),
 }
 
-SERVICE_KEYS = ["formation", "accounting", "advisory", "represent"]
+SERVICE_KEYS = ["formation", "accounting", "advisory", "represent", "trademark"]
 
 # El blog se construye pero todavia no se enlaza en el menu ni entra al
 # sitemap: arranca sin notas y un /blog vacio juega en contra.

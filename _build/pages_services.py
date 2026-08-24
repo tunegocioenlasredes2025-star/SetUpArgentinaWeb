@@ -71,6 +71,8 @@ SUMMARY = {
                      "and the day-to-day decisions of running a business."),
         "represent": ("Locally-resident legal representative and registered fiscal "
                       "domicile to keep your company compliant."),
+        "trademark": ("Protect your brand in Argentina: availability search, filing "
+                      "before the trademark office (INPI) and follow-up."),
     },
     "es": {
         "formation": ("Constituí una SRL, SAS o SA de punta a punta, incluido el CUIT y, "
@@ -81,6 +83,8 @@ SUMMARY = {
                      "contratos y las decisiones del día a día."),
         "represent": ("Representante legal residente y domicilio fiscal para mantener "
                       "tu empresa en regla."),
+        "trademark": ("Protegé tu marca en Argentina: búsqueda de antecedentes, "
+                      "presentación ante el INPI y seguimiento del trámite."),
     },
 }
 
@@ -326,8 +330,59 @@ SERVICES = {
                     "en regla o un domicilio y representante legal tercerizados."),
         },
     },
+    # OJO: este texto lo redactamos nosotros, porque el documento del cliente
+    # solo mencionaba el registro de marcas al pasar. Antes de publicar tiene
+    # que revisarlo Agustin, sobre todo lo que afirma sobre el tramite.
+    "trademark": {
+        "en": {
+            "title": "Trademark Registration in Argentina | SetUp Argentina",
+            "desc": ("Protect your brand in Argentina. Availability search, filing "
+                     "before the trademark office (INPI) and follow-up through to "
+                     "registration."),
+            "h1": "Trademark Registration in Argentina",
+            "intro": ("Your brand becomes legally yours when it is registered. In "
+                      "Argentina the right over a trademark is acquired through "
+                      "registration with the trademark office (INPI), which gives you "
+                      "the exclusive right to use it in the classes you register and "
+                      "the standing to act against anyone using it without your "
+                      "permission. We handle the process end to end and remotely, from "
+                      "the prior search to the follow-up of the file."),
+            "included": [
+                "Prior availability search, to know your real chances before spending",
+                "Advice on which classes to register, according to what you actually sell",
+                "Preparation and filing of the application before the trademark office",
+                "Follow-up of the file and response to objections",
+                "Handling of oppositions from third parties",
+                "Reminder when the renewal falls due",
+            ],
+            "who": ("Companies and entrepreneurs that operate, or plan to operate, "
+                    "under their own brand in Argentina."),
+        },
+        "es": {
+            "title": "Registro de marcas en Argentina | SetUp Argentina",
+            "desc": ("Protegé tu marca en Argentina. Búsqueda de antecedentes, "
+                     "presentación ante el INPI y seguimiento del trámite hasta la "
+                     "concesión."),
+            "h1": "Registro de marcas en Argentina",
+            "intro": ("Tu marca es legalmente tuya cuando está registrada. En Argentina "
+                      "el derecho sobre una marca se adquiere con su registro ante el "
+                      "INPI, que te da el uso exclusivo en las clases que registres y la "
+                      "posibilidad de actuar contra quien la use sin tu permiso. "
+                      "Gestionamos el trámite de punta a punta y de forma remota, desde "
+                      "la búsqueda de antecedentes hasta el seguimiento del expediente."),
+            "included": [
+                "Búsqueda de antecedentes, para saber las chances reales antes de gastar",
+                "Asesoramiento sobre en qué clases registrar, según lo que realmente vendés",
+                "Preparación y presentación de la solicitud ante el INPI",
+                "Seguimiento del expediente y respuesta a las vistas",
+                "Gestión de oposiciones de terceros",
+                "Aviso cuando corresponde renovar",
+            ],
+            "who": ("Empresas y emprendedores que operan, o van a operar, con marca "
+                    "propia en Argentina."),
+        },
+    },
 }
-
 
 def _service_page(key, lang):
     c = SERVICES[key][lang]

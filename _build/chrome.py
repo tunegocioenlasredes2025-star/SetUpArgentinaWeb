@@ -94,16 +94,18 @@ SERVICE_NAMES = {
         "accounting": "Accounting, Tax &amp; Compliance",
         "advisory": "Business &amp; Legal Advisory",
         "represent": "Legal Representation &amp; Registered Office",
+        "trademark": "Trademark Registration",
     },
     "es": {
         "formation": "Constitución de sociedades",
         "accounting": "Contabilidad, impuestos y cumplimiento",
         "advisory": "Asesoramiento empresarial y legal",
         "represent": "Representación legal y domicilio fiscal",
+        "trademark": "Registro de marcas",
     },
 }
 
-SERVICE_ORDER = ["formation", "accounting", "advisory", "represent"]
+SERVICE_ORDER = ["formation", "accounting", "advisory", "represent", "trademark"]
 
 
 def head(*, lang, key, title, description, schema=None, robots="index, follow",
