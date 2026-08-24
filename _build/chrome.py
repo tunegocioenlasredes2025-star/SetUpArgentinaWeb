@@ -7,6 +7,10 @@ from urllib.parse import quote
 from site_cfg import (SITE, EMAIL, WA_NUMBER, WA_DISPLAY, CITY, WA_TEXT,
                       BLOG_PUBLIC, url, abs_url, other)
 
+# Google Analytics 4 del cliente. Va en todas las paginas del sitio,
+# pero NO en /admin/: medir el panel ensucia los datos de visitas.
+GA_ID = "G-59Y52XJLHY"
+
 FONTS = ("https://fonts.googleapis.com/css2?family=Playfair+Display:"
          "ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:"
          "wght@300;400;500;600;700&display=swap")
@@ -170,7 +174,14 @@ def head(*, lang, key, title, description, schema=None, robots="index, follow",
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="{FONTS}" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">{blocks}
+  <link rel="stylesheet" href="/styles.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){{dataLayer.push(arguments);}}
+    gtag('js', new Date());
+    gtag('config', '{GA_ID}');
+  </script>{blocks}
 </head>
 <body>
 <a href="#main" class="skip-link">{T[lang]["skip"]}</a>
