@@ -34,6 +34,7 @@ LABELS = {
         "demo_note": ("This is a sample article, shown so you can see how a published "
                       "note will look. It is not indexed by search engines."),
         "back": "Back to the blog",
+        "share": "Share this article",
         "cta_text": "Have a question we have not covered yet? Just ask.",
         "cta_btn": "Book a Free Consultation",
     },
@@ -56,6 +57,7 @@ LABELS = {
         "demo_note": ("Esta es una nota de ejemplo, puesta para que se vea cómo va a "
                       "quedar un artículo publicado. No la indexan los buscadores."),
         "back": "Volver al blog",
+        "share": "Compartir esta nota",
         "cta_text": "¿Tenés una duda que todavía no cubrimos? Escribinos.",
         "cta_btn": "Agendá una consulta sin cargo",
     },
@@ -264,6 +266,25 @@ def _listing(lang):
                        schema=schema, crumbs=L["crumbs"])
 
 
+def _compartir(post, lang, L):
+    """Botones de compartir. Son links normales, no widgets: no cargan
+    scripts de terceros ni ralentizan la pagina."""
+    from urllib.parse import quote
+    url_abs = SITE + _post_url(post, lang)
+    titulo = post[lang]["title"]
+    wa = "https://wa.me/?text=" + quote(titulo + " " + url_abs)
+    li = "https://www.linkedin.com/sharing/share-offsite/?url=" + quote(url_abs)
+    x = ("https://twitter.com/intent/tweet?text=" + quote(titulo)
+         + "&url=" + quote(url_abs))
+    mail = ("mailto:?subject=" + quote(titulo) + "&body=" + quote(url_abs))
+    return ('<div class="compartir"><span>%s</span>'
+            '<a href="%s" target="_blank" rel="noopener">WhatsApp</a>'
+            '<a href="%s" target="_blank" rel="noopener">LinkedIn</a>'
+            '<a href="%s" target="_blank" rel="noopener">X</a>'
+            '<a href="%s">Email</a></div>'
+            % (L["share"], wa, li, x, mail))
+
+
 def _article(post, lang):
     L = LABELS[lang]
     c = post[lang]
@@ -294,13 +315,15 @@ def _article(post, lang):
     {portada}
     {aviso}
     <div class="prose">{contenido}</div>
+    {compartir}
     <a href="{blog}" class="post-back">{volver}</a>
   </div>
 </article>
 '''.format(badge=L["demo_badge"] if DEMO else L["tag"], titulo=c["title"],
            iso=post["date"], fecha=_fmt_date(post["date"], lang),
            read=c["read"], min=L["min"], portada=portada, aviso=aviso,
-           contenido=c["html"], blog=url("blog", lang), volver=L["back"])
+           contenido=c["html"], blog=url("blog", lang), volver=L["back"],
+           compartir=_compartir(post, lang, L))
 
     schema = {
         "@context": "https://schema.org",

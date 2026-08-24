@@ -442,17 +442,29 @@ def build():
         schema = [
             {
                 "@context": "https://schema.org",
-                "@type": "ProfessionalService",
+                # LegalService y AccountingService son subtipos de
+                # LocalBusiness: le dicen a Google que esto es un negocio
+                # con ubicacion, no solo un sitio. No inventamos calle ni
+                # horarios porque no los tenemos; mejor incompleto que falso.
+                "@type": ["LegalService", "AccountingService"],
                 "@id": SITE + "/#organization",
                 "name": "SetUp Argentina",
                 "description": c["desc"],
                 "url": SITE,
                 "email": EMAIL,
-                "areaServed": {"@type": "Country", "name": "Argentina"},
+                "telephone": "+54 11 2563-7925",
+                "image": SITE + "/images/og-%s.jpg" % lang,
+                "logo": SITE + "/apple-touch-icon.png",
+                "areaServed": [
+                    {"@type": "Country", "name": "Argentina"},
+                    {"@type": "AdministrativeArea", "name": "Worldwide"},
+                ],
                 "address": {"@type": "PostalAddress", "addressLocality": "Buenos Aires",
                             "addressRegion": "CABA", "addressCountry": "AR"},
-                "founder": {"@type": "Person", "name": "Agustín Sofía"},
+                "founder": {"@type": "Person", "name": "Agustín Sofía",
+                            "jobTitle": "Founder and Lead Advisor"},
                 "knowsLanguage": ["es", "en"],
+                "availableLanguage": ["Spanish", "English"],
                 "hasOfferCatalog": {
                     "@type": "OfferCatalog",
                     "name": c["svc_h2"],

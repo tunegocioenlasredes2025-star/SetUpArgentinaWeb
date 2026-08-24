@@ -11,7 +11,7 @@ from site_cfg import SITE, url
 
 COPY = {
     "en": {
-        "title": "Frequently Asked Questions | SetUp Argentina",
+        "title": "Company Formation FAQ: Timelines, Capital and Taxes | SetUp",
         "desc": ("How long incorporation takes, whether you need to travel, which "
                  "structure to choose, capital and taxes. The questions we get most."),
         "crumbs": [("Home", "/"), ("FAQ", None)],
@@ -65,7 +65,7 @@ COPY = {
         ],
     },
     "es": {
-        "title": "Preguntas frecuentes | SetUp Argentina",
+        "title": "Constituir en Argentina: dudas frecuentes | SetUp",
         "desc": ("Cuánto tarda constituir, si hace falta viajar, qué estructura conviene, "
                  "capital mínimo e impuestos. Las preguntas que más nos hacen."),
         "crumbs": [("Inicio", "/es/"), ("Preguntas frecuentes", None)],

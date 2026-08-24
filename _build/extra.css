@@ -443,3 +443,67 @@
   font-size:1.35rem;margin-bottom:10px;color:var(--text-1)}
 .form-result p{color:var(--text-2);margin-bottom:22px;line-height:1.7}
 .form-result .btn-primary{display:inline-flex}
+
+/* ─── Resumen (key takeaways) ───────────── */
+.tldr{
+  margin:26px 0 30px;padding:22px 26px;border-radius:var(--r-md);
+  background:var(--gold-dim);border:1px solid var(--gold-border);
+  border-left:4px solid var(--gold);
+}
+.tldr h2{
+  font-family:var(--font-sans) !important;font-size:.74rem !important;
+  font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold-light);margin:0 0 12px !important;
+}
+.tldr ul{margin:0 !important}
+.tldr li{margin-bottom:8px;color:var(--text-1);font-size:.97rem}
+.tldr li:last-child{margin-bottom:0}
+.tldr li::before{background:var(--gold-light)}
+
+/* ─── Llamada a la accion temprana ──────── */
+.cta-inline{
+  margin:0 0 34px;padding:16px 20px;border-radius:var(--r-md);
+  background:var(--glass);border:1px solid var(--border-md);
+  color:var(--text-2);font-size:.95rem;line-height:1.6;
+}
+.cta-inline a{
+  color:var(--gold-light);font-weight:600;white-space:nowrap;
+  border-bottom:1px solid var(--gold-border);
+}
+.cta-inline a:hover{border-bottom-color:var(--gold)}
+
+/* ─── Tabla comparativa ─────────────────── */
+.tabla-wrap{overflow-x:auto;margin:16px 0 26px;-webkit-overflow-scrolling:touch}
+.tabla-comparativa{
+  width:100%;border-collapse:collapse;font-size:.93rem;min-width:520px;
+  background:var(--bg-card);border-radius:var(--r-md);overflow:hidden;
+}
+.tabla-comparativa th{
+  text-align:left;padding:13px 16px;background:var(--bg-2);
+  color:var(--gold-light);font-size:.74rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+}
+.tabla-comparativa td{
+  padding:14px 16px;border-top:1px solid var(--border);
+  color:var(--text-2);line-height:1.55;vertical-align:top;
+}
+.tabla-comparativa tbody tr:first-child td{border-top:none}
+.tabla-comparativa td:first-child{color:var(--text-1);font-weight:600;white-space:nowrap}
+
+/* El H3 de las tarjetas de otros servicios hereda el estilo previo */
+.related-card h3{
+  color:var(--text-1);font-size:1rem;font-weight:600;
+  margin:0 0 8px;line-height:1.35;font-family:var(--font-sans);
+}
+
+/* ─── Compartir ─────────────────────────── */
+.compartir{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  margin-top:34px;padding-top:22px;border-top:1px solid var(--border);
+}
+.compartir span{color:var(--text-3);font-size:.86rem;margin-right:4px}
+.compartir a{
+  padding:7px 14px;border-radius:999px;font-size:.84rem;font-weight:600;
+  color:var(--text-2);border:1px solid var(--border-md);transition:all .18s;
+}
+.compartir a:hover{color:var(--gold-light);border-color:var(--gold-border);background:var(--gold-dim)}

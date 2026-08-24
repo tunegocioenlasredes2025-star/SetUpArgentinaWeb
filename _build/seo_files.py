@@ -84,5 +84,7 @@ Sitemap: %s/sitemap.xml
 
 def build_files():
     """(ruta, contenido) de los archivos sueltos de SEO."""
+    import llms_file
     return [("sitemap.xml", build_sitemap()),
-            ("robots.txt", ROBOTS)]
+            ("robots.txt", ROBOTS),
+            ("llms.txt", llms_file.build())]

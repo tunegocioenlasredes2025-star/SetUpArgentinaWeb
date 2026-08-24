@@ -1,0 +1,42 @@
+# SetUp Argentina
+
+> Estudio juridico-contable de Buenos Aires (CABA) que ayuda a empresas del exterior y a emprendedores locales a constituir y operar una empresa en Argentina. Todo el proceso es remoto. Equipo propio y bilingue de abogados y contadores.
+
+Sitio en dos idiomas: ingles en la raiz, espanol en /es/.
+Contacto: contact@setupargentina.com.ar | WhatsApp +54 11 2563-7925
+
+## Servicios
+
+- [Constitución de sociedades](https://setupargentina.com/es/servicios/constitucion-de-sociedades/): Constituí una SRL, SAS o SA de punta a punta, incluido el CUIT y, para socios del exterior, la inscripción del Art. 123 o 118.
+- [Contabilidad, impuestos y cumplimiento](https://setupargentina.com/es/servicios/contabilidad-impuestos-y-cumplimiento/): Presentaciones mensuales (IVA, Ingresos Brutos, Ganancias), estados contables, cumplimiento societario y sueldos.
+- [Asesoramiento empresarial y legal](https://setupargentina.com/es/servicios/asesoramiento-empresarial-y-legal/): Tu asesor societario continuo: derecho societario, laboral, contratos y las decisiones del día a día.
+- [Representación legal y domicilio fiscal](https://setupargentina.com/es/servicios/representacion-legal-y-domicilio-fiscal/): Representante legal residente y domicilio fiscal para mantener tu empresa en regla.
+- [Registro de marcas](https://setupargentina.com/es/servicios/registro-de-marcas/): Protegé tu marca en Argentina: búsqueda de antecedentes, presentación ante el INPI y seguimiento del trámite.
+
+## Datos que suelen preguntar
+
+- Un extranjero puede ser dueno del 100% de una empresa argentina.
+- Constituir lleva entre 10 y 30 dias habiles desde la documentacion completa.
+- No hace falta viajar a Argentina: se hace con poder apostillado.
+- Los tres vehiculos son SRL, SAS y SA. La SAS admite un solo accionista y es la mas rapida.
+- Si el socio es una sociedad extranjera, primero debe inscribirse por el Art. 123 ante la IGJ.
+- No se necesita oficina fisica: se provee domicilio fiscal en CABA.
+
+## Paginas principales
+
+- [Inicio](https://setupargentina.com/es/)
+- [Servicios](https://setupargentina.com/es/servicios/)
+- [Nosotros](https://setupargentina.com/es/nosotros/)
+- [Preguntas frecuentes](https://setupargentina.com/es/preguntas-frecuentes/)
+- [Para estudios juridicos y contables](https://setupargentina.com/es/partners/)
+- [Blog](https://setupargentina.com/es/blog/)
+- [Contacto](https://setupargentina.com/es/contacto/)
+
+## En ingles
+
+- [Home](https://setupargentina.com/)
+- [Services](https://setupargentina.com/services/)
+- [About](https://setupargentina.com/about/)
+- [FAQ](https://setupargentina.com/faq/)
+- [Contact](https://setupargentina.com/contact/)
+

@@ -13,6 +13,10 @@ from site_cfg import SITE, url
 LABELS = {
     "en": {
         "svc_tag": "Service",
+        "resumen_h": "In short",
+        "tabla_h": "The three vehicles compared",
+        "cta_inline": "Not sure which structure fits? Ask us, the first consultation is free.",
+        "cta_inline_btn": "Ask a question",
         "h_structures": "The structures",
         "h_foreign": "For foreign companies and shareholders",
         "h_included": "What is included",
@@ -36,6 +40,10 @@ LABELS = {
     },
     "es": {
         "svc_tag": "Servicio",
+        "resumen_h": "En resumen",
+        "tabla_h": "Los tres vehículos, comparados",
+        "cta_inline": "¿No sabés cuál te conviene? Preguntanos, la primera consulta es sin cargo.",
+        "cta_inline_btn": "Hacer una consulta",
         "h_structures": "Las estructuras",
         "h_foreign": "Para socios y sociedades del exterior",
         "h_included": "Qué incluye",
@@ -130,6 +138,12 @@ SERVICES = {
                 "Digital corporate books",
                 "Guidance to open a corporate bank account",
             ],
+            "resumen": [
+                'Three vehicles: SRL, SAS or SA. We advise which fits your case.',
+                'Foreigners can own 100%, and we handle the Article 123 or 118 registration.',
+                'Fully remote: you never have to travel.',
+                'Includes bylaws, registration, tax IDs and corporate books.',
+            ],
             "who": ("Local and international companies, investors and entrepreneurs, "
                     "from startups to established groups."),
         },
@@ -172,13 +186,19 @@ SERVICES = {
                 "Libros societarios digitales",
                 "Guía para abrir la cuenta bancaria",
             ],
+            "resumen": [
+                'Tres vehículos: SRL, SAS o SA. Te asesoramos cuál conviene en tu caso.',
+                'Los extranjeros pueden ser dueños del 100%, y nos ocupamos del Art. 123 o 118.',
+                'Todo remoto: no tenés que viajar.',
+                'Incluye estatuto, inscripción, CUIT y libros societarios.',
+            ],
             "who": ("Empresas, inversores y emprendedores, locales e internacionales, "
                     "desde startups hasta grupos consolidados."),
         },
     },
     "accounting": {
         "en": {
-            "title": "Accounting, Tax and Compliance in Argentina | SetUp Argentina",
+            "title": "Monthly Accounting and Tax Filings in Argentina | SetUp",
             "desc": ("Monthly accounting, tax filings and corporate compliance for your "
                      "Argentine company. VAT, Turnover Tax and Income Tax, handled."),
             "h1": "Accounting, Tax and Compliance in Argentina",
@@ -199,11 +219,17 @@ SERVICES = {
                 "Payroll administration (optional)",
                 "A single point of contact for every deadline",
             ],
+            "resumen": [
+                'Monthly VAT, Turnover Tax and Income Tax filings, on time.',
+                'Financial statements and annual corporate compliance included.',
+                'Payroll administration available as an add-on.',
+                'One point of contact who knows your case.',
+            ],
             "who": ("Companies operating in Argentina that want reliable ongoing "
                     "accounting and tax compliance."),
         },
         "es": {
-            "title": "Contabilidad, impuestos y cumplimiento | SetUp Argentina",
+            "title": "Contabilidad mensual e impuestos de tu empresa | SetUp",
             "desc": ("Contabilidad mensual, impuestos y obligaciones societarias de tu "
                      "empresa. IVA, Ingresos Brutos, Ganancias e IGJ, todo al día. "
                      "Planes a medida."),
@@ -221,6 +247,12 @@ SERVICES = {
                 "DDJJ de beneficiario final)",
                 "Liquidación de sueldos (opcional)",
                 "Un solo contacto para cada vencimiento",
+            ],
+            "resumen": [
+                'IVA, Ingresos Brutos y Ganancias presentados en fecha, todos los meses.',
+                'Estados contables y cumplimiento societario anual incluidos.',
+                'Liquidación de sueldos disponible como adicional.',
+                'Un solo contacto que conoce tu caso.',
             ],
             "who": ("Empresas que operan en Argentina y quieren contabilidad y "
                     "cumplimiento continuo confiable."),
@@ -250,6 +282,12 @@ SERVICES = {
                 "General ongoing business and legal consultations",
                 "Available as part of a monthly plan",
             ],
+            "resumen": [
+                'An outsourced business and legal advisor, not one-off services.',
+                'Company law, labor law, contracts and shareholder matters.',
+                'Works alongside the accounting side, so nothing contradicts.',
+                'Available as part of a monthly plan.',
+            ],
             "who": ("Companies that want a continuous business and legal advisor, "
                     "not just one-off services."),
         },
@@ -275,6 +313,12 @@ SERVICES = {
                 "Temas de socios y directorio",
                 "Consultas empresariales y legales continuas",
                 "Disponible como parte de un plan mensual",
+            ],
+            "resumen": [
+                'Un asesor empresarial y legal externo, no servicios sueltos.',
+                'Derecho societario, laboral, contratos y temas de socios.',
+                'Trabaja junto al área contable, para que nada se contradiga.',
+                'Disponible como parte de un plan mensual.',
             ],
             "who": ("Empresas que quieren un asesor empresarial y legal continuo, "
                     "no solo servicios puntuales."),
@@ -303,11 +347,17 @@ SERVICES = {
                 "Handling of official notices",
                 "Ongoing statutory compliance",
             ],
+            "resumen": [
+                'Required by law for foreign-owned companies (Sections 123 and 118).',
+                'We act as, or appoint, your locally-resident legal representative.',
+                'Registered office and fiscal domicile in Buenos Aires (CABA).',
+                'No local staff or premises needed on your side.',
+            ],
             "who": ("Companies, foreign or local, that need a compliant local presence "
                     "or an outsourced registered office and legal representative."),
         },
         "es": {
-            "title": "Representación legal y domicilio fiscal | SetUp Argentina",
+            "title": "Representante legal y domicilio fiscal en CABA | SetUp",
             "desc": ("Proveemos el representante legal residente y el domicilio fiscal que "
                      "tu empresa necesita para estar en regla, sin que necesites personal "
                      "local."),
@@ -326,6 +376,12 @@ SERVICES = {
                 "Gestión de notificaciones oficiales",
                 "Cumplimiento societario continuo",
             ],
+            "resumen": [
+                'Lo exige la ley para empresas de capital extranjero (Art. 123 y 118).',
+                'Actuamos como, o designamos, tu representante legal residente.',
+                'Domicilio fiscal y sede social en CABA.',
+                'No necesitás personal ni oficina propia.',
+            ],
             "who": ("Empresas, extranjeras o locales, que necesitan una presencia local "
                     "en regla o un domicilio y representante legal tercerizados."),
         },
@@ -335,7 +391,7 @@ SERVICES = {
     # que revisarlo Agustin, sobre todo lo que afirma sobre el tramite.
     "trademark": {
         "en": {
-            "title": "Trademark Registration in Argentina | SetUp Argentina",
+            "title": "Register Your Trademark in Argentina (INPI) | SetUp",
             "desc": ("Protect your brand in Argentina. Availability search, filing "
                      "before the trademark office (INPI) and follow-up through to "
                      "registration."),
@@ -355,11 +411,17 @@ SERVICES = {
                 "Handling of oppositions from third parties",
                 "Reminder when the renewal falls due",
             ],
+            "resumen": [
+                'In Argentina the right over a trademark comes from registering it.',
+                'We run the prior search before you spend on a name you cannot use.',
+                'We advise on which classes to register, based on what you sell.',
+                'We follow the file and handle objections and oppositions.',
+            ],
             "who": ("Companies and entrepreneurs that operate, or plan to operate, "
                     "under their own brand in Argentina."),
         },
         "es": {
-            "title": "Registro de marcas en Argentina | SetUp Argentina",
+            "title": "Registrá tu marca ante el INPI | SetUp Argentina",
             "desc": ("Protegé tu marca en Argentina. Búsqueda de antecedentes, "
                      "presentación ante el INPI y seguimiento del trámite hasta la "
                      "concesión."),
@@ -378,19 +440,81 @@ SERVICES = {
                 "Gestión de oposiciones de terceros",
                 "Aviso cuando corresponde renovar",
             ],
+            "resumen": [
+                'En Argentina el derecho sobre la marca nace con el registro.',
+                'Hacemos la búsqueda de antecedentes antes de que gastes en un nombre que no podés usar.',
+                'Te asesoramos en qué clases registrar, según lo que vendés.',
+                'Seguimos el expediente y gestionamos vistas y oposiciones.',
+            ],
             "who": ("Empresas y emprendedores que operan, o van a operar, con marca "
                     "propia en Argentina."),
         },
     },
 }
 
+# Tabla comparativa. Es el tipo de contenido que Google levanta como
+# fragmento destacado, y responde de un vistazo la pregunta que mas
+# hacen: cual de las tres me conviene.
+TABLA_ESTRUCTURAS = {
+    "en": {
+        "cols": ["Vehicle", "Partners", "Minimum capital", "Typically used for"],
+        "rows": [
+            ["SRL", "2 to 50", "No fixed minimum",
+             "Operating businesses. The most solid structure."],
+            ["SAS", "From 1", "Two minimum wages (around USD 500)",
+             "Setting up fast, or with a single shareholder."],
+            ["SA", "From 2", "Around USD 20,000",
+             "Larger operations, or issuing shares."],
+        ],
+    },
+    "es": {
+        "cols": ["Vehículo", "Socios", "Capital mínimo", "Cuándo se usa"],
+        "rows": [
+            ["SRL", "De 2 a 50", "Sin mínimo fijo",
+             "Empresas operativas. La estructura más sólida."],
+            ["SAS", "Desde 1", "Dos salarios mínimos (unos USD 500)",
+             "Constituir rápido, o con un solo accionista."],
+            ["SA", "Desde 2", "Cerca de USD 20.000",
+             "Operaciones más grandes, o emitir acciones."],
+        ],
+    },
+}
+
+
+def _tabla(lang):
+    t = TABLA_ESTRUCTURAS[lang]
+    cab = "".join("<th>%s</th>" % c for c in t["cols"])
+    filas = "".join(
+        "<tr>" + "".join("<td>%s</td>" % celda for celda in fila) + "</tr>"
+        for fila in t["rows"])
+    return ('<div class="tabla-wrap"><table class="tabla-comparativa">'
+            '<thead><tr>%s</tr></thead><tbody>%s</tbody></table></div>'
+            % (cab, filas))
+
+
 def _service_page(key, lang):
     c = SERVICES[key][lang]
     L = LABELS[lang]
 
     blocks = ['<p class="svc-intro">%s</p>' % c["intro"]]
+
+    # Resumen arriba de todo: el lector sabe en 10 segundos si esto es
+    # para el, y Google tiene de donde sacar una respuesta directa.
+    if c.get("resumen"):
+        items = "".join("<li>%s</li>" % b for b in c["resumen"])
+        blocks.append('<aside class="tldr"><h2>%s</h2><ul>%s</ul></aside>'
+                      % (L["resumen_h"], items))
+
+    # Llamada a la accion temprana, no solo al final: el que ya se
+    # convencio leyendo el primer parrafo no tiene que buscar el boton.
+    blocks.append('<p class="cta-inline">%s <a href="%s">%s %s</a></p>'
+                  % (L["cta_inline"], url("contact", lang),
+                     L["cta_inline_btn"], "&rarr;"))
+
     if c.get("structures"):
         blocks.append("<h2>%s</h2><p>%s</p>" % (L["h_structures"], c["structures"]))
+        if key == "formation":
+            blocks.append("<h3>%s</h3>%s" % (L["tabla_h"], _tabla(lang)))
     if c.get("foreign"):
         blocks.append("<h2>%s</h2><p>%s</p>" % (L["h_foreign"], c["foreign"]))
     items = "".join("<li>%s</li>" % i for i in c["included"])
@@ -398,7 +522,7 @@ def _service_page(key, lang):
     blocks.append("<h2>%s</h2><p>%s</p>" % (L["h_who"], c["who"]))
 
     others = "\n".join(
-        '        <a href="%s" class="related-card"><strong>%s</strong>'
+        '        <a href="%s" class="related-card"><h3>%s</h3>'
         '<span>%s</span></a>' % (url(k, lang), SERVICE_NAMES[lang][k], SUMMARY[lang][k])
         for k in SERVICE_ORDER if k != key)
 

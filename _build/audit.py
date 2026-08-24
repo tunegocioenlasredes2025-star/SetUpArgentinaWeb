@@ -131,6 +131,21 @@ def main():
         if len(urls) > 1:
             errores.append("description repetida en %s" % ", ".join(urls))
 
+    # ── 3b. H1 distinto del title ─────────────────────────
+    # Si el H1 repite el title, se desperdicia el H1: son dos lugares
+    # para decirle a Google dos cosas distintas sobre la misma pagina.
+    for url, d in datos.items():
+        if "noindex" in d["robots"] or not d["titulo"]:
+            continue
+        m = re.search(r"<h1[^>]*>(.*?)</h1>", d["html"], re.I | re.S)
+        if not m:
+            continue
+        h1 = re.sub(r"<[^>]+>", " ", m.group(1))
+        h1 = re.sub(r"\s+", " ", h1).strip().lower()
+        titulo = d["titulo"].split("|")[0].strip().lower()
+        if h1 and h1 == titulo:
+            avisos.append("%s: el H1 repite el meta-titulo" % url)
+
     # ── 4. Links internos rotos ───────────────────────────
     existentes = set(datos.keys())
     for url, d in datos.items():
