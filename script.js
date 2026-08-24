@@ -256,6 +256,19 @@ document.addEventListener('DOMContentLoaded', () => {
         + T.wa + '</a></div>';
     };
 
+    /* Le avisa a Analytics que entro una consulta. El idioma y la pagina
+       de origen viajan como parametros: es lo que despues permite saber
+       cuantas consultas trajo cada mercado, y no solo cuantas hubo. */
+    const avisarAnalytics = () => {
+      if (typeof window.gtag !== 'function') return;
+      window.gtag('event', 'generate_lead', {
+        idioma: lang,
+        pagina_origen: location.pathname,
+        servicio: val('service') || 'sin especificar',
+        pais: val('country') || 'sin especificar'
+      });
+    };
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
@@ -299,6 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
             source: location.pathname
           })
         });
+        if (resp.ok) avisarAnalytics();
         mostrarResultado(resp.ok);
       } catch (err) {
         // Sin internet o con la base caida igual le damos salida al visitante.
