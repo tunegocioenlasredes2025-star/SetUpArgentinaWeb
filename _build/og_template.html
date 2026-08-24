@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    width:1200px;height:630px;overflow:hidden;
+    background:#060C1C;color:#F0F4FC;
+    font-family:Inter,sans-serif;position:relative;
+  }
+  /* Mismo lenguaje visual que el hero del sitio */
+  .glow{
+    position:absolute;width:900px;height:900px;border-radius:50%;
+    background:radial-gradient(circle,rgba(201,149,47,.16) 0%,transparent 65%);
+    right:-260px;top:-320px;
+  }
+  .glow2{
+    position:absolute;width:700px;height:700px;border-radius:50%;
+    background:radial-gradient(circle,rgba(26,79,204,.20) 0%,transparent 65%);
+    left:-220px;bottom:-340px;
+  }
+  .grid{
+    position:absolute;inset:0;opacity:.35;
+    background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+    background-size:60px 60px;
+  }
+  .wrap{position:relative;padding:70px 80px;height:100%;display:flex;flex-direction:column}
+
+  .logo{font-family:'Playfair Display',serif;font-size:34px;font-weight:700;letter-spacing:-.01em}
+  .logo em{color:#C9952F;font-style:normal}
+  .logo span{
+    display:block;font-family:Inter,sans-serif;font-size:13px;font-weight:600;
+    letter-spacing:.34em;color:#6B7E96;margin-top:6px;text-transform:uppercase;
+  }
+
+  h1{
+    font-family:'Playfair Display',serif;font-weight:600;
+    font-size:64px;line-height:1.1;letter-spacing:-.02em;
+    margin-top:auto;max-width:22ch;
+  }
+  h1 b{
+    font-weight:600;
+    background:linear-gradient(90deg,#C9952F,#E4B04A);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  p.sub{color:#B8C5D6;font-size:23px;margin-top:22px;max-width:52ch;line-height:1.5}
+
+  .foot{
+    margin-top:auto;padding-top:34px;display:flex;align-items:center;gap:16px;
+    border-top:1px solid rgba(255,255,255,.10);
+  }
+  .chip{
+    font-size:15px;font-weight:600;color:#E4B04A;
+    border:1px solid rgba(201,149,47,.35);background:rgba(201,149,47,.10);
+    padding:8px 16px;border-radius:999px;
+  }
+  .url{margin-left:auto;color:#6B7E96;font-size:17px;letter-spacing:.04em}
+
+  /* Skyline apenas insinuado, como en el hero */
+  svg.sky{position:absolute;right:0;bottom:0;width:560px;opacity:.14}
+</style>
+</head>
+<body>
+  <div class="glow"></div>
+  <div class="glow2"></div>
+  <div class="grid"></div>
+  <svg class="sky" viewBox="0 0 600 240" preserveAspectRatio="xMaxYMax meet">
+    <rect x="20" y="150" width="34" height="90" fill="#fff"/>
+    <rect x="64" y="110" width="46" height="130" fill="#fff"/>
+    <rect x="120" y="170" width="30" height="70" fill="#fff"/>
+    <rect x="160" y="80" width="52" height="160" fill="#fff"/>
+    <rect x="222" y="130" width="38" height="110" fill="#fff"/>
+    <rect x="270" y="50" width="44" height="190" fill="#fff"/>
+    <rect x="324" y="120" width="50" height="120" fill="#fff"/>
+    <rect x="384" y="160" width="34" height="80" fill="#fff"/>
+    <rect x="428" y="96" width="48" height="144" fill="#fff"/>
+    <rect x="486" y="140" width="36" height="100" fill="#fff"/>
+    <rect x="532" y="176" width="44" height="64" fill="#fff"/>
+  </svg>
+
+  <div class="wrap">
+    <div class="logo">Set<em>UP</em><span>Argentina</span></div>
+    <h1 id="titulo"></h1>
+    <p class="sub" id="bajada"></p>
+    <div class="foot">
+      <span class="chip" id="chip1"></span>
+      <span class="chip" id="chip2"></span>
+      <span class="url">setupargentina.com</span>
+    </div>
+  </div>
+
+<script>
+  const T = {
+    en: {
+      titulo: 'Doing business in <b>Argentina</b>, handled.',
+      bajada: 'Company formation, tax, accounting and ongoing legal advisory. '
+            + 'For foreign companies entering Argentina.',
+      chip1: 'Bilingual team', chip2: '100% remote'
+    },
+    es: {
+      titulo: 'Tu empresa en <b>Argentina</b>, en regla.',
+      bajada: 'Constitución de sociedades, impuestos, contabilidad y asesoramiento '
+            + 'legal continuo. Todo online.',
+      chip1: 'Estudio jurídico-contable', chip2: '100% online'
+    }
+  };
+  const lang = new URLSearchParams(location.search).get('lang') || 'en';
+  const c = T[lang];
+  document.getElementById('titulo').innerHTML = c.titulo;
+  document.getElementById('bajada').textContent = c.bajada;
+  document.getElementById('chip1').textContent = c.chip1;
+  document.getElementById('chip2').textContent = c.chip2;
+  document.documentElement.lang = lang;
+</script>
+</body>
+</html>
