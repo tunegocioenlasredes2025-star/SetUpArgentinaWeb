@@ -18,6 +18,7 @@ LABELS = {
         "cta_inline": "Not sure which structure fits? Ask us, the first consultation is free.",
         "cta_inline_btn": "Ask a question",
         "h_structures": "The structures",
+        "h_clases": "One application per class",
         "h_foreign": "For foreign companies and shareholders",
         "h_included": "What is included",
         "h_who": "Who it is for",
@@ -45,6 +46,7 @@ LABELS = {
         "cta_inline": "¿No sabés cuál te conviene? Preguntanos, la primera consulta es sin cargo.",
         "cta_inline_btn": "Hacer una consulta",
         "h_structures": "Las estructuras",
+        "h_clases": "Una solicitud por clase",
         "h_foreign": "Para socios y sociedades del exterior",
         "h_included": "Qué incluye",
         "h_who": "Para quién es",
@@ -280,6 +282,8 @@ SERVICES = {
                 "Drafting and review of contracts",
                 "Shareholder and board matters",
                 "General ongoing business and legal consultations",
+                "Residence and work visas for foreign directors, shareholders and "
+                "their families",
                 "Available as part of a monthly plan",
             ],
             "resumen": [
@@ -312,6 +316,8 @@ SERVICES = {
                 "Redacción y revisión de contratos",
                 "Temas de socios y directorio",
                 "Consultas empresariales y legales continuas",
+                "Residencias y visas de trabajo para directores, socios extranjeros "
+                "y sus familias",
                 "Disponible como parte de un plan mensual",
             ],
             "resumen": [
@@ -396,6 +402,13 @@ SERVICES = {
                      "before the trademark office (INPI) and follow-up through to "
                      "registration."),
             "h1": "Trademark Registration in Argentina",
+            "clases": ("Argentina does not allow multi-class filings: <strong>each "
+                       "class you want to protect is a separate application</strong>, "
+                       "with its own fee and its own file. That is why choosing the "
+                       "classes matters. Registering more than you need multiplies the "
+                       "cost; registering too few leaves gaps a competitor can use. We "
+                       "advise on the smallest set of classes that actually covers what "
+                       "you sell, and we file one application for each."),
             "intro": ("Your brand becomes legally yours when it is registered. In "
                       "Argentina the right over a trademark is acquired through "
                       "registration with the trademark office (INPI), which gives you "
@@ -405,7 +418,7 @@ SERVICES = {
                       "the prior search to the follow-up of the file."),
             "included": [
                 "Prior availability search, to know your real chances before spending",
-                "Advice on which classes to register, according to what you actually sell",
+                "Advice on which classes to register, and one application filed per class",
                 "Preparation and filing of the application before the trademark office",
                 "Follow-up of the file and response to objections",
                 "Handling of oppositions from third parties",
@@ -414,7 +427,7 @@ SERVICES = {
             "resumen": [
                 'In Argentina the right over a trademark comes from registering it.',
                 'We run the prior search before you spend on a name you cannot use.',
-                'We advise on which classes to register, based on what you sell.',
+   "Each class is a separate application: there is no multi-class filing in Argentina.",
                 'We follow the file and handle objections and oppositions.',
             ],
             "who": ("Companies and entrepreneurs that operate, or plan to operate, "
@@ -426,6 +439,13 @@ SERVICES = {
                      "presentación ante el INPI y seguimiento del trámite hasta la "
                      "concesión."),
             "h1": "Registro de marcas en Argentina",
+            "clases": ("En Argentina no existe la solicitud multiclase: <strong>cada "
+                       "clase que quieras proteger es una solicitud aparte</strong>, con "
+                       "su propia tasa y su propio expediente. Por eso elegir bien las "
+                       "clases importa. Registrar de más multiplica el costo; registrar "
+                       "de menos te deja huecos que un competidor puede aprovechar. Te "
+                       "asesoramos sobre el conjunto mínimo de clases que realmente "
+                       "cubre lo que vendés, y presentamos una solicitud por cada una."),
             "intro": ("Tu marca es legalmente tuya cuando está registrada. En Argentina "
                       "el derecho sobre una marca se adquiere con su registro ante el "
                       "INPI, que te da el uso exclusivo en las clases que registres y la "
@@ -434,7 +454,7 @@ SERVICES = {
                       "la búsqueda de antecedentes hasta el seguimiento del expediente."),
             "included": [
                 "Búsqueda de antecedentes, para saber las chances reales antes de gastar",
-                "Asesoramiento sobre en qué clases registrar, según lo que realmente vendés",
+                "Asesoramiento sobre en qué clases registrar, y una solicitud presentada por clase",
                 "Preparación y presentación de la solicitud ante el INPI",
                 "Seguimiento del expediente y respuesta a las vistas",
                 "Gestión de oposiciones de terceros",
@@ -443,7 +463,7 @@ SERVICES = {
             "resumen": [
                 'En Argentina el derecho sobre la marca nace con el registro.',
                 'Hacemos la búsqueda de antecedentes antes de que gastes en un nombre que no podés usar.',
-                'Te asesoramos en qué clases registrar, según lo que vendés.',
+   "Cada clase es una solicitud aparte: en Argentina no existe la multiclase.",
                 'Seguimos el expediente y gestionamos vistas y oposiciones.',
             ],
             "who": ("Empresas y emprendedores que operan, o van a operar, con marca "
@@ -510,6 +530,9 @@ def _service_page(key, lang):
     blocks.append('<p class="cta-inline">%s <a href="%s">%s %s</a></p>'
                   % (L["cta_inline"], url("contact", lang),
                      L["cta_inline_btn"], "&rarr;"))
+
+    if c.get("clases"):
+        blocks.append("<h2>%s</h2><p>%s</p>" % (L["h_clases"], c["clases"]))
 
     if c.get("structures"):
         blocks.append("<h2>%s</h2><p>%s</p>" % (L["h_structures"], c["structures"]))

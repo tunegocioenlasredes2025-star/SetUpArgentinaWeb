@@ -59,6 +59,14 @@ COPY = {
              "Both, and the ongoing part is our strength. Beyond incorporation we handle "
              "accounting and tax compliance and act as your ongoing business and legal "
              "advisor, all under one roof."),
+            ("Can foreign directors or shareholders get residence in Argentina?",
+             "Yes. Foreign directors, shareholders and their families can apply for "
+             "residence, and there are specific categories for company directors and "
+             "for investors. We handle the process together with the incorporation, so "
+             "the corporate side and the immigration side line up instead of blocking "
+             "each other. If you plan to spend time in Argentina, raise it in the first "
+             "consultation: some decisions on the company structure affect which "
+             "residence category fits."),
             ("Do you handle other matters, like trademarks or visas?",
              "Yes. On request we also register trademarks and assist with residence and "
              "work visas for company directors, among other legal and tax matters."),
@@ -109,6 +117,14 @@ COPY = {
              "Las dos cosas, y el acompañamiento es nuestro fuerte. Además de constituir, "
              "llevamos la contabilidad y somos tu asesor empresarial y legal continuo, "
              "todo en un mismo lugar."),
+            ("¿Los directores o socios extranjeros pueden tramitar residencia?",
+             "Sí. Los directores, socios y sus familias pueden tramitar residencia, y "
+             "existen categorías específicas para directivos de empresas y para "
+             "inversores. Lo gestionamos junto con la constitución, para que lo "
+             "societario y lo migratorio vayan alineados y no se traben entre sí. Si "
+             "pensás pasar tiempo en Argentina, mencionalo en la primera consulta: "
+             "algunas decisiones sobre la estructura de la empresa condicionan qué "
+             "categoría de residencia te corresponde."),
             ("¿Se ocupan de otros temas, como marcas o visas?",
              "Sí. A pedido también registramos marcas y asistimos con residencias y visas "
              "de trabajo para directores, entre otros temas."),
