@@ -6,12 +6,26 @@ las notas a la base: las pide este script cuando se genera el sitio, y
 cada nota queda como una pagina HTML de verdad. Google la ve completa
 apenas entra, sin tener que ejecutar JavaScript.
 
-Si la base no responde, el build no se cae: sigue con lo que haya y
-avisa por consola. Preferimos publicar el sitio sin una nota nueva antes
-que no publicar nada.
+Si la base no responde, el build SE CAE a proposito. Antes seguia de
+largo y generaba el sitio sin notas, que parece lo prudente pero es la
+peor opcion: si Supabase esta pausado y alguien pushea cualquier cambio,
+el blog se publica vacio, las notas ya indexadas empiezan a dar 404 y
+nadie se entera hasta que Google las da de baja.
+
+Al fallar el build, Vercel deja online el ultimo deploy que si funciono
+y el sitio queda intacto, con todas sus notas. El error se ve en el
+panel de Vercel y llega por mail. Es ruidoso a proposito.
+
+Para una emergencia (hay que publicar un cambio urgente con la base
+caida) se saltea con la variable de entorno BLOG_OPCIONAL=1, sabiendo
+que ese deploy sale sin blog.
+
+Ojo: "la base contesta y no hay ninguna nota" NO es un error. Eso es el
+estado normal mientras el cliente todavia no publico nada.
 """
 
 import json
+import os
 import re
 import urllib.error
 import urllib.request
@@ -20,6 +34,28 @@ SUPABASE_URL = "https://tvxhhbonqzabnwwpayet.supabase.co"
 SUPABASE_KEY = "sb_publishable_M-qp7enm2WJrT2l1e1bL3g_N57jtYAH"
 
 TIMEOUT = 12
+
+
+class BlogNoDisponible(RuntimeError):
+    """Supabase no contesto. Mejor no publicar que publicar el blog vacio."""
+
+
+def _sin_base(error):
+    """Corta el build, salvo que se pida explicitamente seguir sin blog."""
+    if os.environ.get("BLOG_OPCIONAL") == "1":
+        print("  aviso: Supabase no responde (%s)." % error)
+        print("         BLOG_OPCIONAL=1: el sitio se genera SIN el blog.")
+        return []
+    raise BlogNoDisponible(
+        "no se pudo leer el blog desde Supabase (%s).\n"
+        "        El build se corta a proposito: si siguiera, el sitio se\n"
+        "        publicaria con el blog vacio y las notas ya indexadas\n"
+        "        empezarian a dar 404.\n"
+        "        Vercel deja online el ultimo deploy que funciono, asi que\n"
+        "        el sitio sigue intacto mientras tanto.\n"
+        "        Revisa si el proyecto de Supabase esta pausado por\n"
+        "        inactividad y despertalo desde el panel.\n"
+        "        Para publicar igual, sin blog: BLOG_OPCIONAL=1" % error)
 
 
 def _reading_minutes(html):
@@ -55,7 +91,8 @@ def _normalizar(fila):
 def fetch_posts():
     """Notas publicadas y con fecha ya cumplida, de la mas nueva a la mas vieja.
 
-    Devuelve [] si la base no responde o todavia no hay nada publicado.
+    Devuelve [] si todavia no hay nada publicado. Si la base NO responde
+    levanta BlogNoDisponible, salvo que BLOG_OPCIONAL=1.
     """
     url = (SUPABASE_URL + "/rest/v1/posts"
            "?select=*&status=eq.published&published_at=lte.now()"
@@ -67,13 +104,9 @@ def fetch_posts():
     try:
         with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
             filas = json.loads(resp.read().decode("utf-8"))
-    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError) as e:
-        print("  aviso: no se pudo leer el blog desde Supabase (%s)." % e)
-        print("         el sitio se genera igual, sin las notas nuevas.")
-        return []
-    except ValueError as e:
-        print("  aviso: Supabase devolvio algo que no es JSON (%s)." % e)
-        return []
+    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError,
+            OSError, ValueError) as e:
+        return _sin_base(e)
 
     notas = [_normalizar(f) for f in filas]
     # Una nota sin ningun idioma completo no se publica.

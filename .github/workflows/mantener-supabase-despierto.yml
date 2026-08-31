@@ -1,0 +1,54 @@
+# Supabase pausa los proyectos del plan gratuito que pasan varios dias sin
+# actividad EN LA BASE. Las visitas al sitio no cuentan: el sitio es estatico
+# y solo consulta la base cuando se genera. Mientras el blog no tenga notas
+# y el formulario no reciba consultas, el proyecto queda "inactivo" y Supabase
+# lo pausa, aunque este sirviendo a un sitio en produccion.
+#
+# Si se pausa: el formulario de contacto deja de guardar las consultas y el
+# panel de carga de notas no abre.
+#
+# Esto le hace una consulta de lectura cada 3 dias. Es la misma consulta que
+# hace el sitio al generarse, asi que ademas sirve de chequeo de salud: si un
+# dia falla, llega el mail de GitHub y nos enteramos antes que el cliente.
+#
+# Cuando el sitio tenga trafico real y notas publicadas, la actividad va a
+# venir sola y esto deja de hacer falta.
+#
+# OJO: GitHub desactiva los workflows programados si el repo pasa 60 dias sin
+# commits. Si eso llega a pasar, se reactiva desde la pestana Actions.
+
+name: Mantener Supabase despierto
+
+on:
+  schedule:
+    - cron: "0 9 */3 * *"   # cada 3 dias, 09:00 UTC (06:00 en Argentina)
+  workflow_dispatch:         # y a mano desde la pestana Actions
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Consultar la base
+        env:
+          # Clave PUBLICABLE. Es publica por diseno, va en el codigo del sitio.
+          # Lo que protege la base son las politicas de RLS, no esta clave.
+          # Nunca poner aca la clave secreta.
+          SUPABASE_URL: https://tvxhhbonqzabnwwpayet.supabase.co
+          SUPABASE_KEY: sb_publishable_M-qp7enm2WJrT2l1e1bL3g_N57jtYAH
+        run: |
+          codigo=$(curl -s -o /tmp/respuesta.json -w '%{http_code}' \
+            -H "apikey: $SUPABASE_KEY" \
+            -H "Authorization: Bearer $SUPABASE_KEY" \
+            "$SUPABASE_URL/rest/v1/posts?select=id&limit=1")
+
+          echo "HTTP $codigo"
+          echo "Respuesta: $(cat /tmp/respuesta.json)"
+
+          if [ "$codigo" != "200" ]; then
+            echo "::error::Supabase no respondio como se esperaba (HTTP $codigo)."
+            echo "Puede estar pausado por inactividad. Entrar al panel de"
+            echo "Supabase y despertarlo, o revisar si cambiaron las politicas."
+            exit 1
+          fi
+
+          echo "Base despierta y respondiendo."
