@@ -173,11 +173,21 @@ def _demo_normalizadas():
     return salida
 
 
-# Las notas reales mandan. Si todavia no hay ninguna publicada, se muestran
-# las de ejemplo para que se vea como queda el blog; en cuanto Agustin
-# publique la primera, las de ejemplo desaparecen solas.
+# Las notas reales mandan. Mientras no hubo ninguna publicada se mostraban
+# dos de ejemplo para que el cliente viera como iba a quedar el blog.
+#
+# Desde que el sitio recibe trafico pago eso se apaga: un prospecto que entra
+# por un anuncio no tiene que encontrarse con notas marcadas "Ejemplo" en el
+# blog de un estudio juridico. El listado vacio ya tiene su propio titulo y
+# llamada a la accion, asi que no queda un hueco.
+#
+# Para volver a mostrarlas (una demo al cliente, por ejemplo) alcanza con
+# poner esto en True. En cuanto haya una nota real, POSTS deja de estar vacio
+# y los ejemplos no se usan aunque este activado.
+MOSTRAR_EJEMPLOS = False
+
 POSTS = fetch_posts()
-DEMO = not POSTS
+DEMO = MOSTRAR_EJEMPLOS and not POSTS
 if DEMO:
     POSTS = _demo_normalizadas()
 
