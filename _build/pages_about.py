@@ -9,9 +9,8 @@ from site_cfg import SITE, url
 COPY = {
     "en": {
         "title": "About SetUp Argentina | Agustín Sofía, Founder and Lead Advisor",
-        "desc": ("Corporate lawyer with over 10 years of experience, admitted to the "
-                 "Buenos Aires City Bar Association, with experience at Accenture "
-                 "and Biz Latin Hub."),
+        "desc": ("Attorney admitted to the Buenos Aires Bar (CPACF) in 2021, with 10+ "
+                 "years in the legal field and experience at Accenture and Biz Latin Hub."),
         "crumbs": [("Home", "/"), ("About", None)],
         "tag": "Your Advisor",
         "h1": "Meet Agustín Sofía",
@@ -20,10 +19,11 @@ COPY = {
         "quote": "We speak your language and understand your business.",
         "quote_by": "Agustín Sofía, Founder, SetUp Argentina",
         "role": "Founder and Lead Advisor, SetUp Argentina",
-        "bio": ("Corporate lawyer with 10+ years of experience, admitted to the Buenos "
-                "Aires City Bar Association (CPACF, Vol. 141, Fol. 71), with postgraduate "
-                "studies at UCA, Universidad Austral and UCEMA, and experience at Accenture "
-                "and Biz Latin Hub. He founded SetUp Argentina to give international and "
+        "bio": ("Attorney admitted to the Buenos Aires Bar (CPACF) in 2021, with over "
+                "ten years in the legal field, first in the public sector and then in "
+                "corporate services for international companies. Bar registration: CPACF "
+                "Vol. 141, Fol. 71. Postgraduate studies at UCA, Universidad Austral and "
+                "UCEMA, and experience at Accenture and Biz Latin Hub. He founded SetUp Argentina to give international and "
                 "local clients a single, reliable partner for legal and accounting from "
                 "day one. Bilingual in Spanish and English."),
         "cred_h": "Credentials",
@@ -46,9 +46,8 @@ COPY = {
     },
     "es": {
         "title": "Nosotros | Agustín Sofía, fundador de SetUp Argentina",
-        "desc": ("Abogado corporativo con más de 10 años de experiencia, matriculado en "
-                 "el Colegio Público de Abogados, con experiencia en Accenture y "
-                 "Biz Latin Hub."),
+        "desc": ("Abogado matriculado en el CPACF desde 2021, con más de diez años en "
+                 "el área legal y experiencia en Accenture y Biz Latin Hub."),
         "crumbs": [("Inicio", "/es/"), ("Nosotros", None)],
         "tag": "Tu asesor",
         "h1": "Agustín Sofía",
@@ -57,10 +56,12 @@ COPY = {
         "quote": "Hablamos tu idioma y entendemos tu negocio.",
         "quote_by": "Agustín Sofía, fundador de SetUp Argentina",
         "role": "Fundador y asesor principal, SetUp Argentina",
-        "bio": ("Abogado corporativo con más de 10 años de experiencia, matriculado en el "
-                "Colegio Público de Abogados de la Capital Federal (CPACF, Tomo 141, "
-                "Folio 71), con posgrados en UCA, Universidad Austral y UCEMA, y experiencia "
-                "en Accenture y Biz Latin Hub. Fundó SetUp Argentina para dar a clientes "
+        "bio": ("Abogado matriculado en el Colegio Público de la Abogacía de la Capital "
+                "Federal desde 2021, con más de diez años en el área legal, primero en el "
+                "sector público y después en servicios corporativos para empresas "
+                "internacionales. Matrícula: CPACF Tomo 141, Folio 71. Posgrados en UCA, "
+                "Universidad Austral y UCEMA, y experiencia en Accenture y Biz Latin Hub. "
+                "Fundó SetUp Argentina para dar a clientes "
                 "locales e internacionales un único socio confiable para lo legal y lo "
                 "contable desde el primer día. Bilingüe español-inglés."),
         "cred_h": "Credenciales",

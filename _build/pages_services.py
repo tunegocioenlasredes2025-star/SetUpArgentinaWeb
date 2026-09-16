@@ -72,9 +72,9 @@ LABELS = {
 # Resumen corto para el indice y para la home.
 SUMMARY = {
     "en": {
-        "formation": ("Incorporate an SRL, SAS or SA end to end, including your tax ID "
-                      "and, for foreign company shareholders, the Article 123 or 118 "
-                      "registration."),
+        "formation": ("Legal advice and representation to incorporate an SRL, SAS or SA, "
+                      "including the Article 123 or 118 filing for foreign company "
+                      "shareholders."),
         "accounting": ("Monthly filings (VAT, Turnover Tax, Income Tax), financial "
                        "statements, corporate compliance and payroll."),
         "advisory": ("Your ongoing corporate advisor: company law, labor law, contracts "
@@ -85,8 +85,8 @@ SUMMARY = {
                       "before the trademark office (INPI) and follow-up."),
     },
     "es": {
-        "formation": ("Constituí una SRL, SAS o SA de punta a punta, incluido el CUIT y, "
-                      "para socios del exterior, la inscripción del Art. 123 o 118."),
+        "formation": ("Asesoramiento y representación legal para constituir una SRL, SAS "
+                      "o SA, incluida la inscripción del Art. 123 o 118 para socios del exterior."),
         "accounting": ("Presentaciones mensuales (IVA, Ingresos Brutos, Ganancias), "
                        "estados contables, cumplimiento societario y sueldos."),
         "advisory": ("Tu asesor societario continuo: derecho societario, laboral, "
@@ -102,15 +102,16 @@ SERVICES = {
     "formation": {
         "en": {
             "title": "Company Formation in Argentina (SRL, SAS, SA) | SetUp Argentina",
-            "desc": ("Set up your company in Argentina 100% remotely. SRL, SAS and SA, "
-                     "with tax registration and foreign shareholders handled."),
+            "desc": ("Legal and accounting advice to incorporate an SRL, SAS or SA in "
+                     "Argentina, with registry filings signed by our attorney. Fully remote. "
+                     "Free first consultation."),
             "h1": "Company Formation in Argentina",
-            "intro": ("Setting up a company in Argentina involves several moving parts: "
-                      "choosing the right vehicle, drafting bylaws that comply with local "
-                      "law, registering with the companies registry (IGJ), obtaining tax "
-                      "IDs and opening a bank account. We manage the entire process end to "
-                      "end and fully remotely, so you can incorporate without travelling "
-                      "and start operating with everything in order from day one."),
+            "intro": ("Company formation in Argentina is a legal process. Our attorney and "
+                      "accounting team advise on the right structure, draft the bylaws, "
+                      "file with the companies registry under the professional "
+                      "pre-qualification opinion that IGJ regulations require, and complete "
+                      "the post-incorporation tax and corporate steps as your legal "
+                      "representatives. Fully remote."),
             "structures": ("The three most common vehicles are the <strong>SRL</strong> "
                            "(limited liability company, the classic choice for operating "
                            "businesses), the <strong>SAS</strong> (simplified corporation, "
@@ -125,42 +126,51 @@ SERVICES = {
                         "company. If your shareholder is a foreign company, it must first "
                         "register locally under Article 123 (to hold shares in a subsidiary) "
                         "or operate through a branch under Article 118, and foreign "
-                        "shareholders need an Argentine tax ID. We handle all of it, the "
-                        "Article 123 or 118 registration, apostilled documents, sworn "
-                        "translations and the tax IDs, as part of the formation, so you can "
-                        "set up entirely from abroad."),
+                        "shareholders need an Argentine tax ID. As your legal representatives, "
+                        "we prepare and file the Article 123 or 118 registration. Documents "
+                        "issued abroad must be notarized, apostilled and translated by a "
+                        "sworn translator in Argentina. We review them before they are "
+                        "issued so nothing has to be redone, and no shareholder needs to "
+                        "travel."),
             "included": [
                 "Advice on the right structure",
                 "Drafting of bylaws",
                 "Name reservation",
                 "Official Gazette publication",
-                "Registration with the companies registry",
-                "Corporate and foreign-shareholder tax IDs",
+                ("Filing with the companies registry, with the professional "
+                 "pre-qualification opinion required by IGJ regulations, signed by our "
+                 "attorney"),
+                ("Tax registration of the company and its foreign shareholders, completed "
+                 "by our legal and accounting team as part of the engagement"),
                 "Article 123 or 118 registration where applicable",
                 "Digital corporate books",
                 "Guidance to open a corporate bank account",
             ],
             "resumen": [
                 'Three vehicles: SRL, SAS or SA. We advise which fits your case.',
-                'Foreigners can own 100%, and we handle the Article 123 or 118 registration.',
+                'Foreigners can own 100%, and we prepare and file the Article 123 or 118 registration.',
                 'Fully remote: you never have to travel.',
-                'Includes bylaws, registration, tax IDs and corporate books.',
+                ('Includes legal advice, bylaws, professional filing with the registry, '
+                 'post-incorporation tax and corporate compliance, and digital corporate books.'),
             ],
             "who": ("Local and international companies, investors and entrepreneurs, "
                     "from startups to established groups."),
+            "credentials": ("Legal work on every engagement is performed by Leandro "
+                            "Agustín Sofía, attorney admitted to the Buenos Aires Bar "
+                            "(CPACF T° 141 F° 71), together with our accounting team."),
         },
         "es": {
             "title": "Constitución de sociedades: SRL, SAS y SA | SetUp",
-            "desc": ("Constituí tu empresa en Argentina 100% online. SRL, SAS y SA, con la "
-                     "inscripción impositiva y los socios extranjeros resueltos. Primera "
-                     "consulta sin cargo."),
+            "desc": ("Asesoramiento legal y contable para constituir una SRL, SAS o SA en "
+                     "Argentina, con la presentación firmada por nuestro abogado. Todo "
+                     "online. Primera consulta sin cargo."),
             "h1": "Constitución de sociedades en Argentina",
-            "intro": ("Constituir una empresa en Argentina tiene varias etapas: elegir el "
-                      "vehículo adecuado, redactar un estatuto que cumpla con la normativa, "
-                      "inscribir la sociedad ante la IGJ, obtener los identificadores "
-                      "fiscales y abrir la cuenta bancaria. Gestionamos todo el proceso de "
-                      "punta a punta y de forma remota, para que constituyas sin moverte y "
-                      "empieces a operar con todo en regla desde el primer día."),
+            "intro": ("Constituir una sociedad en Argentina es un proceso jurídico. Nuestro "
+                      "equipo de abogados y contadores te asesora sobre la estructura "
+                      "adecuada, redacta el estatuto, presenta la inscripción ante el "
+                      "Registro con el dictamen de precalificación profesional que exige la "
+                      "normativa de IGJ y completa los pasos fiscales y societarios "
+                      "posteriores como tus representantes legales. Todo en forma remota."),
             "structures": ("Los tres vehículos más usados son la <strong>SRL</strong> "
                            "(responsabilidad limitada, la clásica para empresas operativas), "
                            "la <strong>SAS</strong> (por acciones simplificada, la más ágil "
@@ -173,29 +183,40 @@ SERVICES = {
                         "de una empresa argentina. Si tu socio es una sociedad del exterior, "
                         "primero debe inscribirse bajo el Art. 123 (para participar en una "
                         "filial) u operar como sucursal bajo el Art. 118, y los socios "
-                        "extranjeros necesitan identificador fiscal argentino. Nos ocupamos "
-                        "de todo, la inscripción del Art. 123 o 118, los documentos "
-                        "apostillados, las traducciones públicas y los identificadores, "
-                        "como parte de la constitución."),
+                        "extranjeros necesitan identificador fiscal argentino. Como tus "
+                        "representantes legales, preparamos y presentamos la inscripción "
+                        "por el artículo 123 o 118. Los documentos emitidos en el exterior "
+                        "deben estar certificados, apostillados y traducidos por traductor "
+                        "público en Argentina. Los revisamos antes de su emisión para que "
+                        "nada tenga que rehacerse, y ningún socio necesita viajar."),
             "included": [
                 "Asesoramiento sobre la estructura",
                 "Redacción del estatuto",
                 "Reserva de nombre",
                 "Publicación en el Boletín Oficial",
-                "Inscripción ante la IGJ",
-                "CUIT de la sociedad y CDI de los socios extranjeros",
+                ("Presentación ante el Registro de sociedades, con el dictamen de "
+                 "precalificación profesional que exige la normativa de IGJ, firmado por "
+                 "nuestro abogado"),
+                ("Inscripción fiscal de la sociedad y de sus socios extranjeros, realizada "
+                 "por nuestro equipo legal y contable como parte del servicio"),
                 "Inscripción del Art. 123 o 118 cuando corresponde",
                 "Libros societarios digitales",
                 "Guía para abrir la cuenta bancaria",
             ],
             "resumen": [
                 'Tres vehículos: SRL, SAS o SA. Te asesoramos cuál conviene en tu caso.',
-                'Los extranjeros pueden ser dueños del 100%, y nos ocupamos del Art. 123 o 118.',
+                'Los extranjeros pueden ser dueños del 100%, y preparamos y presentamos la inscripción del Art. 123 o 118.',
                 'Todo remoto: no tenés que viajar.',
-                'Incluye estatuto, inscripción, CUIT y libros societarios.',
+                ('Incluye asesoramiento legal, estatuto, presentación profesional ante el '
+                 'Registro, cumplimiento fiscal y societario posterior a la inscripción y '
+                 'libros societarios digitales.'),
             ],
             "who": ("Empresas, inversores y emprendedores, locales e internacionales, "
                     "desde startups hasta grupos consolidados."),
+            "credentials": ("El trabajo legal de cada encargo lo realiza Leandro Agustín "
+                            "Sofía, abogado matriculado en el Colegio Público de la "
+                            "Abogacía de la Capital Federal (CPACF T° 141 F° 71), junto "
+                            "con nuestro equipo contable."),
         },
     },
     "accounting": {
@@ -591,8 +612,13 @@ def _service_page(key, lang):
     crumbs = [(LABELS[lang]["crumb_home"], url("home", lang)),
               (LABELS[lang]["crumb_services"], url("services", lang)),
               (SERVICE_NAMES[lang][key], None)]
+    # Credenciales al final, antes del footer: quien firma el trabajo legal.
+    creds = ""
+    if c.get("credentials"):
+        creds = ('\n<section class="svc-section svc-credentials"><div class="container">'
+                 '<p class="prose">%s</p></div></section>\n' % c["credentials"])
     return render.page(key, lang, title=c["title"], description=c["desc"],
-                       body=body + cta_band(lang, L["cta_text"], L["cta_btn"]),
+                       body=body + cta_band(lang, L["cta_text"], L["cta_btn"]) + creds,
                        schema=schema, crumbs=crumbs)
 
 
