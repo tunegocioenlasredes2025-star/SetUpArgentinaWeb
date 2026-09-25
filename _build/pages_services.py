@@ -72,9 +72,8 @@ LABELS = {
 # Resumen corto para el indice y para la home.
 SUMMARY = {
     "en": {
-        "formation": ("Legal advice and representation to incorporate an SRL, SAS or SA, "
-                      "including the Article 123 or 118 filing for foreign company "
-                      "shareholders."),
+        "formation": ("Legal and accounting advice to set up an SRL, SAS or SA, with an "
+                      "attorney and accountants alongside you from the first call."),
         "accounting": ("Monthly filings (VAT, Turnover Tax, Income Tax), financial "
                        "statements, corporate compliance and payroll."),
         "advisory": ("Your ongoing corporate advisor: company law, labor law, contracts "
@@ -85,8 +84,8 @@ SUMMARY = {
                       "before the trademark office (INPI) and follow-up."),
     },
     "es": {
-        "formation": ("Asesoramiento y representación legal para constituir una SRL, SAS "
-                      "o SA, incluida la inscripción del Art. 123 o 118 para socios del exterior."),
+        "formation": ("Asesoramiento legal y contable para constituir una SRL, SAS o SA, "
+                      "con un abogado y contadores a tu lado desde la primera llamada."),
         "accounting": ("Presentaciones mensuales (IVA, Ingresos Brutos, Ganancias), "
                        "estados contables, cumplimiento societario y sueldos."),
         "advisory": ("Tu asesor societario continuo: derecho societario, laboral, "
@@ -102,16 +101,14 @@ SERVICES = {
     "formation": {
         "en": {
             "title": "Company Formation in Argentina (SRL, SAS, SA) | SetUp Argentina",
-            "desc": ("Legal and accounting advice to incorporate an SRL, SAS or SA in "
-                     "Argentina, with registry filings signed by our attorney. Fully remote. "
-                     "Free first consultation."),
+            "desc": ("Legal and accounting advice to set up an SRL, SAS or SA in "
+                     "Argentina. Attorney-led and fully remote. Free first consultation."),
             "h1": "Company Formation in Argentina",
             "intro": ("Company formation in Argentina is a legal process. Our attorney and "
-                      "accounting team advise on the right structure, draft the bylaws, "
-                      "file with the companies registry under the professional "
-                      "pre-qualification opinion that IGJ regulations require, and complete "
-                      "the post-incorporation tax and corporate steps as your legal "
-                      "representatives. Fully remote."),
+                      "accounting team advise you on the structure that fits your business, "
+                      "draft the bylaws and accompany you at every step, so your company "
+                      "starts on solid ground. Fully remote, in your language. The first "
+                      "consultation is free."),
             "structures": ("The three most common vehicles are the <strong>SRL</strong> "
                            "(limited liability company, the classic choice for operating "
                            "businesses), the <strong>SAS</strong> (simplified corporation, "
@@ -126,32 +123,27 @@ SERVICES = {
                         "company. If your shareholder is a foreign company, it must first "
                         "register locally under Article 123 (to hold shares in a subsidiary) "
                         "or operate through a branch under Article 118, and foreign "
-                        "shareholders need an Argentine tax ID. As your legal representatives, "
-                        "we prepare and file the Article 123 or 118 registration. Documents "
-                        "issued abroad must be notarized, apostilled and translated by a "
-                        "sworn translator in Argentina. We review them before they are "
-                        "issued so nothing has to be redone, and no shareholder needs to "
+                        "shareholders need an Argentine tax ID. We advise you on which "
+                        "applies to your case, prepare the documentation and tell you what "
+                        "certifications and translations each document needs before it is "
+                        "issued, so nothing has to be redone and no shareholder needs to "
                         "travel."),
             "included": [
                 "Advice on the right structure",
-                "Drafting of bylaws",
-                "Name reservation",
-                "Official Gazette publication",
-                ("Filing with the companies registry, with the professional "
-                 "pre-qualification opinion required by IGJ regulations, signed by our "
-                 "attorney"),
-                ("Tax registration of the company and its foreign shareholders, completed "
-                 "by our legal and accounting team as part of the engagement"),
-                "Article 123 or 118 registration where applicable",
+                "Drafting of the bylaws",
+                "Preparation of the documentation the registry requires",
+                "Coordination with notaries and sworn translators",
+                "Support at every stage of the process through to registration",
+                ("Advice on the tax and corporate obligations your company takes on once "
+                 "it is incorporated"),
                 "Digital corporate books",
                 "Guidance to open a corporate bank account",
             ],
             "resumen": [
-                'Three vehicles: SRL, SAS or SA. We advise which fits your case.',
-                'Foreigners can own 100%, and we prepare and file the Article 123 or 118 registration.',
-                'Fully remote: you never have to travel.',
-                ('Includes legal advice, bylaws, professional filing with the registry, '
-                 'post-incorporation tax and corporate compliance, and digital corporate books.'),
+                'Three vehicles: SRL, SAS or SA. We advise which one fits your case.',
+                'Foreign shareholders can own 100%. We advise on the requirements and accompany you.',
+                'Fully remote: no shareholder needs to travel.',
+                'An attorney and accountants on your side, from the first call.',
             ],
             "who": ("Local and international companies, investors and entrepreneurs, "
                     "from startups to established groups."),
@@ -162,15 +154,14 @@ SERVICES = {
         "es": {
             "title": "Constitución de sociedades: SRL, SAS y SA | SetUp",
             "desc": ("Asesoramiento legal y contable para constituir una SRL, SAS o SA en "
-                     "Argentina, con la presentación firmada por nuestro abogado. Todo "
-                     "online. Primera consulta sin cargo."),
+                     "Argentina. A cargo de un abogado y todo online. Primera consulta sin "
+                     "cargo."),
             "h1": "Constitución de sociedades en Argentina",
             "intro": ("Constituir una sociedad en Argentina es un proceso jurídico. Nuestro "
-                      "equipo de abogados y contadores te asesora sobre la estructura "
-                      "adecuada, redacta el estatuto, presenta la inscripción ante el "
-                      "Registro con el dictamen de precalificación profesional que exige la "
-                      "normativa de IGJ y completa los pasos fiscales y societarios "
-                      "posteriores como tus representantes legales. Todo en forma remota."),
+                      "equipo de abogados y contadores te asesora sobre la estructura que "
+                      "mejor se adapta a tu negocio, redacta el estatuto y te acompaña en "
+                      "cada paso, para que tu empresa arranque sobre base firme. Todo online "
+                      "y en tu idioma. La primera consulta es sin cargo."),
             "structures": ("Los tres vehículos más usados son la <strong>SRL</strong> "
                            "(responsabilidad limitada, la clásica para empresas operativas), "
                            "la <strong>SAS</strong> (por acciones simplificada, la más ágil "
@@ -183,33 +174,27 @@ SERVICES = {
                         "de una empresa argentina. Si tu socio es una sociedad del exterior, "
                         "primero debe inscribirse bajo el Art. 123 (para participar en una "
                         "filial) u operar como sucursal bajo el Art. 118, y los socios "
-                        "extranjeros necesitan identificador fiscal argentino. Como tus "
-                        "representantes legales, preparamos y presentamos la inscripción "
-                        "por el artículo 123 o 118. Los documentos emitidos en el exterior "
-                        "deben estar certificados, apostillados y traducidos por traductor "
-                        "público en Argentina. Los revisamos antes de su emisión para que "
-                        "nada tenga que rehacerse, y ningún socio necesita viajar."),
+                        "extranjeros necesitan identificador fiscal argentino. Te "
+                        "asesoramos sobre cuál corresponde en tu caso, preparamos la "
+                        "documentación y te indicamos qué certificaciones y traducciones "
+                        "necesita cada documento antes de que se emita, para que nada tenga "
+                        "que rehacerse y ningún socio necesite viajar."),
             "included": [
                 "Asesoramiento sobre la estructura",
                 "Redacción del estatuto",
-                "Reserva de nombre",
-                "Publicación en el Boletín Oficial",
-                ("Presentación ante el Registro de sociedades, con el dictamen de "
-                 "precalificación profesional que exige la normativa de IGJ, firmado por "
-                 "nuestro abogado"),
-                ("Inscripción fiscal de la sociedad y de sus socios extranjeros, realizada "
-                 "por nuestro equipo legal y contable como parte del servicio"),
-                "Inscripción del Art. 123 o 118 cuando corresponde",
+                "Preparación de la documentación que pide el Registro",
+                "Coordinación con escribanos y traductores públicos",
+                "Acompañamiento en cada etapa del proceso hasta la inscripción",
+                ("Asesoramiento sobre las obligaciones fiscales y societarias que tu "
+                 "sociedad asume una vez constituida"),
                 "Libros societarios digitales",
                 "Guía para abrir la cuenta bancaria",
             ],
             "resumen": [
                 'Tres vehículos: SRL, SAS o SA. Te asesoramos cuál conviene en tu caso.',
-                'Los extranjeros pueden ser dueños del 100%, y preparamos y presentamos la inscripción del Art. 123 o 118.',
-                'Todo remoto: no tenés que viajar.',
-                ('Incluye asesoramiento legal, estatuto, presentación profesional ante el '
-                 'Registro, cumplimiento fiscal y societario posterior a la inscripción y '
-                 'libros societarios digitales.'),
+                'Los socios del exterior pueden ser dueños del 100%. Te asesoramos sobre los requisitos y te acompañamos.',
+                'Todo online: ningún socio necesita viajar.',
+                'Un abogado y contadores de tu lado, desde la primera llamada.',
             ],
             "who": ("Empresas, inversores y emprendedores, locales e internacionales, "
                     "desde startups hasta grupos consolidados."),
