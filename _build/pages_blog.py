@@ -14,6 +14,11 @@ from chrome import ARROW_SVG, cta_band
 from posts_source import fetch_posts
 from site_cfg import SITE, url
 
+# Quien firma las notas. Va en el dato estructurado del articulo, que es
+# donde Google lee la autoria: una nota legal firmada por un abogado
+# matriculado pesa distinto que una firmada por "la empresa".
+AUTOR = "Leandro Agustín Sofía Liuzzi"
+
 LABELS = {
     "en": {
         "title": "Blog | Doing Business in Argentina — SetUp Argentina",
@@ -168,7 +173,8 @@ def _demo_normalizadas():
                 ("<h2>%s</h2>" % t) if tag == "h2" else ("<p>%s</p>" % t)
                 for tag, t in c["body"])
             nota[lang] = {"title": c["title"], "excerpt": c["excerpt"],
-                          "html": html, "read": c["read"], "cover_alt": ""}
+                          "html": html, "read": c["read"], "cover_alt": "",
+                          "meta_title": "", "meta_desc": c["excerpt"]}
         salida.append(nota)
     return salida
 
@@ -343,18 +349,24 @@ def _article(post, lang):
         "datePublished": post["date"],
         "dateModified": post["date"],
         "inLanguage": "en" if lang == "en" else "es-AR",
-        "author": {"@type": "Organization", "name": "SetUp Argentina", "url": SITE},
+        "author": {"@type": "Person", "name": AUTOR,
+                   "url": SITE + url("about", lang)},
         "publisher": {"@type": "Organization", "name": "SetUp Argentina", "url": SITE},
         "mainEntityOfPage": SITE + _post_url(post, lang),
     }
     if post.get("cover"):
         schema["image"] = post["cover"]
 
+    # El titulo que se ve en la pagina y el que va en Google no siempre son
+    # el mismo: el H1 puede ser largo y descriptivo, el <title> tiene que
+    # entrar en el resultado. Si la nota trae meta propio, manda ese.
+    titulo_meta = c.get("meta_title") or ("%s | SetUp Argentina" % c["title"])
+
     crumbs = [(L["crumbs"][0][0], url("home", lang)),
               ("Blog", url("blog", lang)), (c["title"], None)]
     return render.page(
-        "blog", lang, title="%s | SetUp Argentina" % c["title"],
-        description=c["excerpt"],
+        "blog", lang, title=titulo_meta,
+        description=c.get("meta_desc") or c["excerpt"],
         body=body + cta_band(lang, L["cta_text"], L["cta_btn"]),
         schema=schema, crumbs=crumbs, paths=paths,
         robots="noindex, follow" if DEMO else "index, follow")

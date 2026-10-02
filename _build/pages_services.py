@@ -148,8 +148,9 @@ SERVICES = {
             "who": ("Local and international companies, investors and entrepreneurs, "
                     "from startups to established groups."),
             "credentials": ("Legal work on every engagement is performed by Leandro "
-                            "Agustín Sofía, attorney admitted to the Buenos Aires Bar "
-                            "(CPACF T° 141 F° 71), together with our accounting team."),
+                            "Agustín Sofía Liuzzi, attorney admitted to the Buenos Aires "
+                            "Bar (CPACF T° 141 F° 71), together with our accounting "
+                            "team."),
         },
         "es": {
             "title": "Constitución de sociedades: SRL, SAS y SA | SetUp",
@@ -199,9 +200,9 @@ SERVICES = {
             "who": ("Empresas, inversores y emprendedores, locales e internacionales, "
                     "desde startups hasta grupos consolidados."),
             "credentials": ("El trabajo legal de cada encargo lo realiza Leandro Agustín "
-                            "Sofía, abogado matriculado en el Colegio Público de la "
-                            "Abogacía de la Capital Federal (CPACF T° 141 F° 71), junto "
-                            "con nuestro equipo contable."),
+                            "Sofía Liuzzi, abogado matriculado en el Colegio Público de "
+                            "la Abogacía de la Capital Federal (CPACF T° 141 F° 71), "
+                            "junto con nuestro equipo contable."),
         },
     },
     "accounting": {

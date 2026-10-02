@@ -461,7 +461,7 @@ def build():
                 ],
                 "address": {"@type": "PostalAddress", "addressLocality": "Buenos Aires",
                             "addressRegion": "CABA", "addressCountry": "AR"},
-                "founder": {"@type": "Person", "name": "Agustín Sofía",
+                "founder": {"@type": "Person", "name": "Leandro Agustín Sofía Liuzzi",
                             "jobTitle": "Founder and Lead Advisor"},
                 "knowsLanguage": ["es", "en"],
                 "availableLanguage": ["Spanish", "English"],

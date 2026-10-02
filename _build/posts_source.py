@@ -78,12 +78,19 @@ def _normalizar(fila):
             salida[lang] = None          # la nota no existe en este idioma
             continue
         html = fila.get("body_" + lang) or ""
+        extracto = fila.get("excerpt_" + lang) or ""
         salida[lang] = {
             "title": titulo,
-            "excerpt": fila.get("excerpt_" + lang) or "",
+            "excerpt": extracto,
             "html": html,
             "read": _reading_minutes(html),
             "cover_alt": fila.get("cover_alt_" + lang) or "",
+            # Meta title y meta description propios, para cuando el titulo
+            # que se ve en la pagina no es el que conviene en Google. Si la
+            # base todavia no tiene estas columnas, el .get() devuelve None
+            # y la nota sigue usando el titulo y el extracto de siempre.
+            "meta_title": fila.get("meta_title_" + lang) or "",
+            "meta_desc": fila.get("meta_desc_" + lang) or extracto,
         }
     return salida
 

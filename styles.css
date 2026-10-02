@@ -2670,4 +2670,46 @@ input, textarea, select { font-family: inherit; }
 }
 .compartir a:hover{color:var(--gold-light);border-color:var(--gold-border);background:var(--gold-dim)}
 
+/* ─── Preguntas frecuentes agrupadas ────── */
+/* El acordeon sigue siendo plano: los grupos son solo una ayuda de
+   lectura para una lista de 18 preguntas. */
+.faq-grupo{
+  font-family:var(--font-sans);font-size:.76rem;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--gold);
+  margin:44px 0 16px;
+}
+.faq-section .faq-grupo:first-child{margin-top:0}
+.faq-link{
+  display:inline-block;margin-top:10px;color:var(--gold-light);
+  font-size:.88rem;font-weight:600;border-bottom:1px solid var(--gold-border);
+  transition:all .18s;
+}
+.faq-link:hover{color:var(--text-1);border-bottom-color:currentColor}
+
+/* Cierre con dos acciones (consulta + WhatsApp) */
+.cta-acciones{
+  display:flex;gap:14px;justify-content:center;align-items:center;flex-wrap:wrap;
+}
+
+/* ─── Nota del blog ─────────────────────── */
+/* Las anclas tienen que quedar debajo del nav fijo al saltar desde el FAQ */
+.post-body .prose h2[id]{scroll-margin-top:96px}
+/* Subtitulo dentro de una seccion: una nota larga los necesita y el
+   h3 del navegador queda mas chico que el propio parrafo. */
+.prose h3{
+  font-family:var(--font-sans);font-weight:600;color:var(--text-1);
+  font-size:1.06rem;line-height:1.4;margin:30px 0 10px;
+}
+/* Firma del autor al pie del articulo */
+.post-autor{
+  margin-top:30px;padding-top:20px;border-top:1px solid var(--border);
+  color:var(--text-3);font-size:.9rem;line-height:1.7;
+}
+
+@media (max-width:640px){
+  .faq-grupo{margin:34px 0 14px}
+  .cta-acciones{flex-direction:column;align-items:stretch}
+  .cta-acciones a{justify-content:center}
+}
+
 /* ===== BILINGUE:END ===== */

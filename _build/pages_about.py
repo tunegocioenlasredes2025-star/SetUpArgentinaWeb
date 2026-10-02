@@ -8,16 +8,19 @@ from site_cfg import SITE, url
 
 COPY = {
     "en": {
-        "title": "About SetUp Argentina | Agustín Sofía, Founder and Lead Advisor",
+        "title": "About SetUp Argentina | Leandro Agustín Sofía Liuzzi",
         "desc": ("Attorney admitted to the Buenos Aires Bar (CPACF) in 2021, with 10+ "
                  "years in the legal field and experience at Accenture and Biz Latin Hub."),
         "crumbs": [("Home", "/"), ("About", None)],
         "tag": "Your Advisor",
-        "h1": "Meet Agustín Sofía",
+        "h1": "Meet Leandro Agustín Sofía Liuzzi",
         "lead": ("One firm for the whole journey, legal and accounting under one roof, "
                  "in your language."),
-        "quote": "We speak your language and understand your business.",
-        "quote_by": "Agustín Sofía, Founder, SetUp Argentina",
+        "quote": ("Argentina's rules are hard to read from the outside. Our job "
+                  "is to make sense of them, manage them and keep your company in "
+                  "good standing, so that your only concern is growing your "
+                  "business."),
+        "quote_by": "Leandro Agustín Sofía Liuzzi, Founder, SetUp Argentina",
         "role": "Founder and Lead Advisor, SetUp Argentina",
         "bio": ("Attorney admitted to the Buenos Aires Bar (CPACF) in 2021, with over "
                 "ten years in the legal field, first in the public sector and then in "
@@ -39,22 +42,24 @@ COPY = {
             ("Bilingual, Spanish and English",
              "Direct communication with clients, no intermediaries, no translation delays."),
         ],
-        "photo_alt": "Agustín Sofía, founder of SetUp Argentina",
+        "photo_alt": "Leandro Agustín Sofía Liuzzi, founder of SetUp Argentina",
         "cta_text": ("Book a free initial consultation and get a personalized roadmap "
                      "for doing business in Argentina."),
         "cta_btn": "Book a Free Consultation",
     },
     "es": {
-        "title": "Nosotros | Agustín Sofía, fundador de SetUp Argentina",
+        "title": "Nosotros | Leandro Agustín Sofía Liuzzi | SetUp Argentina",
         "desc": ("Abogado matriculado en el CPACF desde 2021, con más de diez años en "
                  "el área legal y experiencia en Accenture y Biz Latin Hub."),
         "crumbs": [("Inicio", "/es/"), ("Nosotros", None)],
         "tag": "Tu asesor",
-        "h1": "Agustín Sofía",
+        "h1": "Leandro Agustín Sofía Liuzzi",
         "lead": ("Un solo estudio para todo el camino, lo legal y lo contable en un "
                  "mismo lugar."),
-        "quote": "Hablamos tu idioma y entendemos tu negocio.",
-        "quote_by": "Agustín Sofía, fundador de SetUp Argentina",
+        "quote": ("Argentina tiene reglas difíciles de leer desde afuera. Nuestro "
+                  "trabajo es digerirlas, manejarlas y mantener tu empresa en regla, "
+                  "para que tu única preocupación sea hacer crecer tu negocio."),
+        "quote_by": "Leandro Agustín Sofía Liuzzi, fundador de SetUp Argentina",
         "role": "Fundador y asesor principal, SetUp Argentina",
         "bio": ("Abogado matriculado en el Colegio Público de la Abogacía de la Capital "
                 "Federal desde 2021, con más de diez años en el área legal, primero en el "
@@ -74,7 +79,7 @@ COPY = {
             ("Bilingüe español-inglés",
              "Comunicación directa, sin intermediarios ni demoras de traducción."),
         ],
-        "photo_alt": "Agustín Sofía, fundador de SetUp Argentina",
+        "photo_alt": "Leandro Agustín Sofía Liuzzi, fundador de SetUp Argentina",
         "cta_text": ("Agendá una consulta inicial sin cargo y llevate una hoja de ruta "
                      "personalizada para tu empresa en Argentina."),
         "cta_btn": "Agendá una consulta sin cargo",
@@ -128,7 +133,7 @@ def build():
             "inLanguage": "en" if lang == "en" else "es-AR",
             "mainEntity": {
                 "@type": "Person",
-                "name": "Agustín Sofía",
+                "name": "Leandro Agustín Sofía Liuzzi",
                 "jobTitle": c["role"],
                 "description": c["bio"],
                 "image": SITE + "/images/agustin-sofia.jpg",
